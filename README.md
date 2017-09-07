@@ -10,6 +10,7 @@
 - 运行GenApplication文件即可生成代码在outRoot目录下（注：修改表名要存在库中）
 - 运行CyApplication文件即可启动spring boot项目
 - 生成后的代码放到相应目录下，启动项目，可以直接访问http://localhost:[端口号]/modules/[业务模块]/[功能模块].html
+- 访问路径也可以直接参考生成的menu.sql文件
 
 **项目结构** 
 ```
@@ -65,6 +66,7 @@ cy-generator
 **生成文件说明**
 - controller entity mapper service会继承sdk中的类实现基础增删改查，因此类中不会生成方法
 - 分页使用pagehelper
+- menu.sql 菜单及功能按钮权限相关
 
 **其它**
 - 码云仓库:http://git.oschina.net/bzj/cy-generator
