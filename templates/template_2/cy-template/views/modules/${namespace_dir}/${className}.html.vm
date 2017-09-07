@@ -51,6 +51,6 @@
 	</div>
 </div>
 
-<script src="../../js/modules/${namespace}/list.js"></script>
+<script src="../../js/modules/${namespace}/${classNameLower}.js"></script>
 </body>
 </html>
