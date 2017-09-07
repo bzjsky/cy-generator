@@ -14,14 +14,14 @@
     <entry key="namespace">test</entry>
 
     <!-- 项目根目录 -->
-    <entry key="outRoot">E:\work\git\cy-generator</entry>
+    <entry key="outRoot">G:\work\git\cy-generator</entry>
 
     <!-- 需要移除的表名前缀,使用逗号进行分隔多个前缀,示例值: t_,v_ -->  
     <entry key="tableRemovePrefixes"></entry>  
 
     <!-- 数据库用户名、密码 -->
     <entry key="jdbc_username">root</entry>  
-    <entry key="jdbc_password">root</entry>
+    <entry key="jdbc_password">jun</entry>
 
           
     <!-- oracle需要指定jdbc.schema,其它数据库忽略此项配置 -->
