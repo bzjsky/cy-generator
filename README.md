@@ -6,7 +6,7 @@
 - 此项目由rapid为基础扩展
 
 **项目使用说明** 
-- 修改generator.xml文件，outRoot改为项目根目录，数据库改为对应即可
+- 修改generator.xml文件，outRoot改为项目根目录，数据库改为对应即可（generator.xml，application.yml）
 - 运行GenApplication文件即可生成代码在outRoot目录下（注：修改表名要存在库中）
 - 运行CyApplication文件即可启动spring boot项目
 - 生成后的代码放到相应目录下，启动项目，可以直接访问http://localhost:[端口号]/modules/[业务模块]/[功能模块].html
