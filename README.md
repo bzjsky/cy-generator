@@ -5,8 +5,8 @@
 
 **项目使用说明** 
 - 修改generator.xml文件，outRoot改为项目根目录，数据库改为对应即可
-- 运行CyApplication文件即可启动spring boot项目
 - 运行GenApplication文件即可生成代码在outRoot目录下（注：修改表名要存在库中）
+- 运行CyApplication文件即可启动spring boot项目
 
 **模版二适用项目**
 - spring boot spring mvc mybatis 
