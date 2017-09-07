@@ -66,6 +66,6 @@ cy-generator
 - controller entity mapper service会继承sdk中的类实现基础增删改查，因此类中不会生成方法
 - 分页使用pagehelper
 
-**如何交流、反馈、参与贡献**
+**其它**
 - 码云仓库:http://git.oschina.net/bzj/cy-generator
 - github仓库：https://github.com/bzjsky/cy-generator 
