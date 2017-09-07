@@ -13,7 +13,7 @@
 - 如：[renren-fast](http://git.oschina.net/babaio/renren-fast/tree/master)
 
 **适用以下数据库生成**
-- mysql``
+- mysql
 - H2
 - Oracle
 - SQLServer2000
