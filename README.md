@@ -32,6 +32,7 @@
 - entity 
 - mapper 
 - service 
+
 **生成文件说明**
 - controller entity mapper service会继承sdk中的类实现基础增删改查
 - 分页使用pagehelper
