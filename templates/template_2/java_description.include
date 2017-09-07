@@ -1,0 +1,6 @@
+ * ${table.remarks}
+ * @author Auto-generated
+ * @version 1.0
+ * @since 1.0
+ * @createTime:<#if now??>${now?string('yyyy-MM-dd HH:mm:ss')}</#if>
+ *

@@ -1,0 +1,6 @@
+# 此为注释 – 将被 Git 忽略
+.settings
+.project
+.classpath
+/target/
+*.iml
