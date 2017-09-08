@@ -10,7 +10,7 @@ import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
 <#list table.javaTypes as javaType>
-<#if !javaType?contains("lang")>
+<#if (!javaType?contains("lang") && javaType?contains("."))>
 import ${javaType};
 </#if>
 </#list>

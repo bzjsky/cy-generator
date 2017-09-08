@@ -8,7 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-<#if !table.pkColumn.javaType?contains("lang")>
+<#if (!table.pkColumn.javaType?contains("lang") && table.pkColumn.javaType?contains("."))>
 import ${javaType};
 </#if>
 import com.cy.sdk.controller.BasicsController;

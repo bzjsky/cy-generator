@@ -6,7 +6,7 @@ package ${basepackage}.business.${namespace}.service.impl;
 import org.springframework.stereotype.Service;
 import ${basepackage}.business.${namespace}.service.${className}Service;
 import ${basepackage}.business.${namespace}.entity.${className};
-<#if !table.pkColumn.javaType?contains("lang")>
+<#if (!table.pkColumn.javaType?contains("lang") && table.pkColumn.javaType?contains("."))>
         import ${javaType};
 </#if>
 import com.cy.sdk.service.impl.BasicsServiceImpl;

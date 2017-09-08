@@ -4,7 +4,7 @@
 package ${basepackage}.business.${namespace}.service;
 
 import ${basepackage}.business.${namespace}.entity.${className};
-<#if !table.pkColumn.javaType?contains("lang")>
+<#if (!table.pkColumn.javaType?contains("lang") && table.pkColumn.javaType?contains("."))>
 import ${javaType};
 </#if>
 import com.cy.sdk.service.BasicsService;
