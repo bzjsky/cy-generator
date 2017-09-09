@@ -35,12 +35,14 @@
 		<div class="panel-heading">{{title}}</div>
 		<form class="form-horizontal">
 		<#list table.notPkColumns as column>
+			<#if (column.columnNameLower!='createDate' && column.columnNameLower!='modifyDate')>
 			<div class="form-group">
 				<div class="col-sm-2 control-label <#if !column.nullable>required</#if>">${column.columnAlias}</div>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" v-model="record.${column.columnNameLower}" placeholder="${column.remarks}"/>
 				</div>
 			</div>
+			</#if>
 		</#list>
 			<div class="form-group">
 				<div class="col-sm-2 control-label"></div> 
