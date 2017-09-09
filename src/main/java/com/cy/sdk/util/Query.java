@@ -5,7 +5,7 @@ import java.util.Map;
 
 /**
  * 查询参数
- * @author baozj<2017年7月27日>
+ * @author cy<2017年7月27日>
  */
 public class Query extends LinkedHashMap<String, Object> {
 	
