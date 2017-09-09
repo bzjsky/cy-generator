@@ -5,6 +5,5 @@
 /target/
 *.iml
 /outRoot/
-src/main/java/com/cy/business/**/*.java
-src/main/java/com/cy/**/*.java
+src/main/java/com/cy/GenApplication.java
 /src/main/resources/
