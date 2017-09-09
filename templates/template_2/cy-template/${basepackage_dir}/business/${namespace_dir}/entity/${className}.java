@@ -26,16 +26,17 @@ public class ${className} extends BasicsEntity{
 	<#list table.columns as column>
     /**
      * ${column.remarks!}
-     */	
+     */
+    <#if column.hibernateValidatorExprssion?length gt 0>
 	${column.hibernateValidatorExprssion}
+	</#if>
 	private ${column.simpleJavaType} ${column.columnNameLower};
-	</#list>
 
+	</#list>
 	<@generateConstructor className/>
 	<@generateJavaColumns/>
 	<@generateJavaOneToMany/>
 	<@generateJavaManyToOne/>
-	
 	public int hashCode() {
 		return new HashCodeBuilder()
 		<#list table.pkColumns as column>
@@ -71,6 +72,7 @@ public class ${className} extends BasicsEntity{
 	public ${column.simpleJavaType} get${column.columnName}() {
 		return this.${column.columnNameLower};
 	}
+
 	</#list>
 </#macro>
 

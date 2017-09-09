@@ -32,7 +32,7 @@ public class ColumnHelper {
 		if(DatabaseDataTypesUtils.isString(c.getJavaType()) && c.getSize() > 0) {
 			result += String.format("@Length(max=%s)",c.getSize());
 		}
-		if(DatabaseDataTypesUtils.isIntegerNumber(c.getJavaType())) {
+/*		if(DatabaseDataTypesUtils.isIntegerNumber(c.getJavaType())) {
 			String javaType = DatabaseDataTypesUtils.getPreferredJavaType(c.getSqlType(), c.getSize(), c.getDecimalDigits());
 			if(javaType.toLowerCase().indexOf("short") >= 0) {
 				result += " @Max("+Short.MAX_VALUE+")";
@@ -46,7 +46,7 @@ public class ColumnHelper {
 					result += " @Max("+Long.MAX_VALUE+"L)";
 				}
 			}
-		}
+		}*/
 		return result.trim();
 	}
 	
