@@ -4,7 +4,7 @@
 .classpath
 /target/
 *.iml
-outRoot/*
-src/main/java/com/cy/business/*
-src/main/java/com/cy/GenApplication.java
-cy-generator/src/main/resources/*
+# /outRoot/
+src/main/java/com/cy/business/**/*.java
+src/main/java/com/cy/**/*.java
+/src/main/resources/
