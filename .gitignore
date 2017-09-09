@@ -4,7 +4,7 @@
 .classpath
 /target/
 *.iml
-# /outRoot/
+/outRoot/
 src/main/java/com/cy/business/**/*.java
 src/main/java/com/cy/**/*.java
 /src/main/resources/
