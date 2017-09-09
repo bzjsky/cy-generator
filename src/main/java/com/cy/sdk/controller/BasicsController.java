@@ -22,20 +22,18 @@ import java.util.List;
  * @param <T>
  * @param <ID>
  */
-@RestController
-@RequestMapping("basics")
-public class BasicsController<T extends BasicsEntity, ID extends Serializable> {
+public abstract class BasicsController<T extends BasicsEntity, ID extends Serializable> {
 
     protected final Logger logger = Logger.getLogger(this.getClass());
+
+    @Autowired
+    private BasicsService<T, ID> basicsService;
 
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
         binder.registerCustomEditor(Date.class, new DateEditor(true));
     }
-
-    @Autowired
-    private BasicsService<T, ID> basicsService;
 
     @RequestMapping("save")
     public Message save(@RequestBody T t){

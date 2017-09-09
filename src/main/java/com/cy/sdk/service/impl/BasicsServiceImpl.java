@@ -6,7 +6,9 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.io.Serializable;
 import java.util.List;
 
@@ -17,8 +19,7 @@ import java.util.List;
  * @param <T>
  * @param <ID>
  */
-public class BasicsServiceImpl<T, ID extends Serializable> implements BasicsService<T, ID> {
-    protected final Logger logger = Logger.getLogger(this.getClass());
+public abstract class BasicsServiceImpl<T, ID extends Serializable> implements BasicsService<T, ID> {
 
     @Autowired
     BasicsMapper<T, ID> basicsMapper;
@@ -62,7 +63,7 @@ public class BasicsServiceImpl<T, ID extends Serializable> implements BasicsServ
     public PageInfo<T> queryListPage(Integer pageNum, Integer pageSize, T t) {
         if(pageNum == null) pageNum = 1;
         if(pageSize == null) pageSize = 10;
-        return new PageInfo<T>(PageHelper.startPage(pageNum, pageSize).doSelectPage(()-> basicsMapper.queryList(t)));
+        return new PageInfo<>(PageHelper.startPage(pageNum, pageSize).doSelectPage(() -> basicsMapper.queryList(t)));
     }
 
     @Override
