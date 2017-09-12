@@ -35,7 +35,7 @@
 		<div class="panel-heading">{{title}}</div>
 		<form class="form-horizontal">
 		<#list table.notPkColumns as column>
-			<#if (column.columnNameLower!='createDate' && column.columnNameLower!='modifyDate')>
+			<#if (!ignore_columns?exists || ignore_columns?index_of(column.columnNameLower) = -1)>
 			<div class="form-group">
 				<div class="col-sm-2 control-label <#if !column.nullable>required</#if>">${column.columnAlias}</div>
 				<div class="col-sm-10">

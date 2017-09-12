@@ -11,23 +11,26 @@
     <entry key="basepackage">com.cy</entry>  
 
     <!-- 业务模块 -->
-    <entry key="namespace">test</entry>
+    <entry key="namespace">member</entry>
 
     <!-- 项目根目录 -->
-    <entry key="outRoot">G:\work\git\cy-generator</entry>
+    <entry key="outRoot">E:\work\git\cy-generator</entry>
 
     <!-- 需要移除的表名前缀,使用逗号进行分隔多个前缀,示例值: t_,v_ -->  
-    <entry key="tableRemovePrefixes"></entry>  
+    <entry key="tableRemovePrefixes">cy_</entry>
 
     <!-- 数据库用户名、密码 -->
     <entry key="jdbc_username">root</entry>  
-    <entry key="jdbc_password">jun</entry>
+    <entry key="jdbc_password">root</entry>
 
           
     <!-- oracle需要指定jdbc.schema,其它数据库忽略此项配置 -->
-    <entry key="jdbc_schema"></entry>  
-    <entry key="jdbc_catalog"></entry>  
-      
+    <entry key="jdbc_schema"></entry>
+    <entry key="jdbc_catalog"></entry>
+
+    <!--忽略列（只针对生成javabean及html文件，适用模版二）-->
+    <entry key="ignore_columns">id,createId,createName,createDate,modifyId,modifyName,modifyDate</entry>
+
     <!-- 数据库类型映射  -->  
     <entry key="java_typemapping.java.sql.Timestamp">java.util.Date</entry>  
     <entry key="java_typemapping.java.sql.Date">java.util.Date</entry>  
