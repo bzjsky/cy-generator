@@ -39,8 +39,8 @@ public class GenApplication {
                 + File.separator + template.getPath());
 
         // 通过数据库表生成文件
-        g.deleteByTable("goods_ext");
-        g.generateByTable("goods_ext");
+        g.deleteByTable("cy_navigation");
+        g.generateByTable("cy_navigation");
 
         // 删除生成器的输出目录//
         // g.deleteOutRootDir();
