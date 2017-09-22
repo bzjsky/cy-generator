@@ -9,12 +9,6 @@
 
 	<!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="${basepackage}.business.${namespace}.entity.vo.${className}Vo" id="BasicsVoResultMap" extends="BasicsResultMap">
-		<#list table.compositeIdColumns as column>
-		<id property="${column.columnNameLower}" column="${column.sqlName}" />
-		</#list>
-		<#list table.notPkColumns as column>
-		<result property="${column.columnNameLower}" column="${column.sqlName}"/>
-		</#list>
     </resultMap>
 
 </mapper>
