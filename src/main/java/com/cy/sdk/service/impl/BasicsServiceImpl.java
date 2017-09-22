@@ -7,6 +7,7 @@ import com.github.pagehelper.PageInfo;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.io.Serializable;
@@ -25,26 +26,31 @@ public abstract class BasicsServiceImpl<T, ID extends Serializable> implements B
     BasicsMapper<T, ID> basicsMapper;
 
     @Override
+    @Transactional
     public boolean insert(T t) {
         return basicsMapper.insert(t) > 0;
     }
 
     @Override
+    @Transactional
     public boolean insertBatch(List<T> list) {
         return basicsMapper.insertBatch(list) > 0;
     }
 
     @Override
+    @Transactional
     public boolean delete(ID id) {
         return basicsMapper.delete(id) > 0;
     }
 
     @Override
+    @Transactional
     public boolean deleteBatch(List<ID> ids) {
         return basicsMapper.deleteBatch(ids) > 0;
     }
 
     @Override
+    @Transactional
     public boolean update(T t) {
         return basicsMapper.update(t) > 0;
     }
