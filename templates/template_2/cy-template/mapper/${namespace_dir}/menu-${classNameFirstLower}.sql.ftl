@@ -9,10 +9,10 @@ set @parentId = @@identity;
 
 -- 菜单对应按钮SQL
 INSERT INTO `sys_menu` (`parent_id`, `name`, `url`, `perms`, `type`, `icon`, `order_num`)
-    SELECT @parentId, '查看', null, '${classNameLower}:list,${classNameLower}:info', '2', null, '6';
+    SELECT @parentId, '查看', null, '${classNameLower}:queryListPage,${classNameLower}:getById', '2', null, '6';
 INSERT INTO `sys_menu` (`parent_id`, `name`, `url`, `perms`, `type`, `icon`, `order_num`)
-    SELECT @parentId, '新增', null, '${classNameLower}:save', '2', null, '6';
+    SELECT @parentId, '新增', null, '${classNameLower}:save,${classNameLower}:saveBatch', '2', null, '6';
 INSERT INTO `sys_menu` (`parent_id`, `name`, `url`, `perms`, `type`, `icon`, `order_num`)
-    SELECT @parentId, '修改', null, '${classNameLower}:update', '2', null, '6';
+    SELECT @parentId, '修改', null, '${classNameLower}:modify', '2', null, '6';
 INSERT INTO `sys_menu` (`parent_id`, `name`, `url`, `perms`, `type`, `icon`, `order_num`)
-    SELECT @parentId, '删除', null, '${classNameLower}:delete', '2', null, '6';
+    SELECT @parentId, '删除', null, '${classNameLower}:remove,${classNameLower}:removeBatch', '2', null, '6';
