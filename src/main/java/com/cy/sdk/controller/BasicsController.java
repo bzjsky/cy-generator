@@ -102,7 +102,7 @@ public abstract class BasicsController<T extends BasicsEntity, ID extends Serial
     }
 
     @RequestMapping("queryListPage")
-    public Message modify(Integer pageNum, Integer pageSize, T t){
+    public Message queryListPage(Integer pageNum, Integer pageSize, T t){
         try {
             return Message.success(basicsService.queryListPage(pageNum, pageSize, t));
         } catch (Exception e){
