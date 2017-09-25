@@ -9,7 +9,7 @@
 
 	<!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="${basepackage}.business.${namespace}.entity.${className}" id="BasicsResultMap">
-		<#list table.compositeIdColumns as column>
+		<#list table.pkColumns as column>
 		<id property="${column.columnNameLower}" column="${column.sqlName}" />
 		</#list>
 		<#list table.notPkColumns as column>
@@ -23,7 +23,7 @@
 	</sql>
 
 	<!-- 新增 useGeneratedKeys="true"(主键自增)  keyProperty="xxx" for sqlserver and mysql -->
-	<insert id="insert" useGeneratedKeys="true" keyProperty="${table.idColumn.columnNameFirstLower}" parameterType="${basepackage}.business.${namespace}.entity.${className}">
+	<insert id="insert" useGeneratedKeys="true" keyProperty="${table.pkColumn.columnNameFirstLower}" parameterType="${basepackage}.business.${namespace}.entity.${className}">
 		INSERT INTO ${table.sqlName?upper_case}
 		<trim prefix="(" suffix=")" suffixOverrides="," >
 		<#list table.notPkColumns as column>
@@ -61,10 +61,10 @@
 	</insert>
 
 	<!-- 删除 -->
-	<delete id="delete" parameterType="${table.idColumn.javaType}">
+	<delete id="delete" parameterType="${table.pkColumn.javaType}">
 		DELETE FROM ${table.sqlName?upper_case}
 		WHERE
-		<#list table.compositeIdColumns as column>
+		<#list table.pkColumns as column>
 		${column.sqlName} = <@mapperEl column.columnNameLower/> <#if column_has_next> AND </#if>
 		</#list>
 	</delete>
@@ -73,15 +73,15 @@
 	<delete id="deleteBatch">
 		DELETE FROM ${table.sqlName?upper_case}
 		WHERE
-		<#if (table.compositeIdColumns?size>1)>
+		<#if (table.pkColumns?size>1)>
 			<foreach item="id" collection="list" open="(" separator="OR" close=")">
-				<#list table.compositeIdColumns as column>
+				<#list table.pkColumns as column>
 					${column.sqlName} = <@mapperEl column.columnNameLower/> <#if column_has_next> AND </#if>
 				</#list>
 			</foreach>
 		</#if>
-		<#if (table.compositeIdColumns?size==1)>
-		<#list table.compositeIdColumns as column>
+		<#if (table.pkColumns?size==1)>
+		<#list table.pkColumns as column>
 		${column.sqlName} IN
 		<foreach item="id" collection="list" open="(" separator="," close=")">
 			${r"#{"}id}
@@ -102,15 +102,15 @@
 			</#list>
 		</set>
 		WHERE
-			<#list table.compositeIdColumns as column>${column.sqlName} = <@mapperEl column.columnNameLower/> <#if column_has_next> AND </#if> </#list>
+			<#list table.pkColumns as column>${column.sqlName} = <@mapperEl column.columnNameLower/> <#if column_has_next> AND </#if> </#list>
 	</update>
 
 	<!-- 查询详情 -->
-	<select id="getObjectByPK"  resultMap="BasicsResultMap" parameterType="${table.idColumn.javaType}">
+	<select id="getObjectByPK"  resultMap="BasicsResultMap" parameterType="${table.pkColumn.javaType}">
 		SELECT <include refid="Basics_columns" />
 		FROM ${table.sqlName?upper_case}
 		WHERE
-			<#list table.compositeIdColumns as column>${column.sqlName} = <@mapperEl 'id'/> <#if column_has_next> AND </#if></#list>
+			<#list table.pkColumns as column>${column.sqlName} = <@mapperEl 'id'/> <#if column_has_next> AND </#if></#list>
 	</select>
 
 	<!-- 查询列表 -->

@@ -7,6 +7,8 @@ import java.util.List;
 
 import com.cy.generator.provider.db.table.model.Column;
 import com.cy.generator.util.StringHelper;
+import org.springframework.util.CollectionUtils;
+
 /**
  * 包含一组Column对象的容器类
  * @author cy
@@ -36,6 +38,7 @@ public class ColumnSet implements java.io.Serializable{
 	public void addColumn(com.cy.generator.provider.db.table.model.Column c) {
 		columns.add(c);
 	}
+
 
 	public com.cy.generator.provider.db.table.model.Column getBySqlName(String name, int sqlType) {
 		for(com.cy.generator.provider.db.table.model.Column c : columns) {
@@ -94,6 +97,9 @@ public class ColumnSet implements java.io.Serializable{
 		for(com.cy.generator.provider.db.table.model.Column c : getColumns()) {
 			if(c.isPk())
 				results.add(c);
+		}
+		if(results.isEmpty()){//无主键默认取第一个为主键
+			results.add(getColumns().iterator().next());
 		}
 		return results;
 	}

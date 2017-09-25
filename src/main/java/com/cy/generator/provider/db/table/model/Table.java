@@ -213,8 +213,11 @@ public class Table implements java.io.Serializable,Cloneable {
 	/** 得到单主键，等价于getPkColumns().get(0)  */
 	public Column getPkColumn() {
 		Column c = columns.getPkColumn();
-		if(c == null) {
-			throw new IllegalStateException("not found primary key on table:"+getSqlName());
+//		if(c == null) {
+//			throw new IllegalStateException("not found primary key on table:"+getSqlName());
+//		}
+		if(c == null){//无主键默认取第一个为主键
+			c = columns.getColumns().iterator().next();
 		}
 		return c;
 	}
