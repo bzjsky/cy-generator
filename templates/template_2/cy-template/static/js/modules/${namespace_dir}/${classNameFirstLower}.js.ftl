@@ -5,9 +5,9 @@ $(function () {
         url: baseURL + '${classNameLower}/queryListPage',
         datatype: "json",
         colModel: [
-<#list table.compositeIdColumns as column>
+<#--<#list table.compositeIdColumns as column>
 			{ label: '${column.columnNameLower}', name: '${column.columnNameLower}', index: '${column.columnNameLower}', width: 50, key: true },
-</#list>
+</#list>-->
 <#list table.notPkColumns as column>
 			{ label: '${column.remarks}', name: '${column.columnNameLower}', index: '${column.columnNameLower}', width: 80 }<#if column_has_next>, </#if>
 </#list>
