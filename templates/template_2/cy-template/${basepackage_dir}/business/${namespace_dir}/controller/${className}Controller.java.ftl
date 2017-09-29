@@ -23,7 +23,7 @@ import ${basepackage}.business.${namespace}.service.${className}Service;
 @RequestMapping("${classNameLower}")
 public class ${className}Controller extends BasicsController<${className}, ${table.pkColumn.simpleJavaType}>{
 
-	@Resource
+	@Autowired
 	${className}Service ${classNameLower}Service;
 
 }

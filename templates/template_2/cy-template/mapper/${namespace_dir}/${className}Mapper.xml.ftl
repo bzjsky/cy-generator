@@ -24,7 +24,7 @@
 
 	<!-- 新增 useGeneratedKeys="true"(主键自增)  keyProperty="xxx" for sqlserver and mysql -->
 	<insert id="insert" useGeneratedKeys="true" keyProperty="${table.pkColumn.columnNameFirstLower}" parameterType="${basepackage}.business.${namespace}.entity.${className}">
-		INSERT INTO ${table.sqlName?upper_case}
+		INSERT INTO ${table.sqlName}
 		<trim prefix="(" suffix=")" suffixOverrides="," >
 		<#list table.notPkColumns as column>
 			<if test="${column.columnNameFirstLower} != null" >
@@ -50,7 +50,7 @@
 
 	<!-- 批量新增 -->
 	<insert id="insertBatch" parameterType="${basepackage}.business.${namespace}.entity.${className}">
-		INSERT INTO ${table.sqlName?upper_case} (
+		INSERT INTO ${table.sqlName} (
 		<#list table.columns as column> ${column.sqlName}<#if column_has_next>,</#if></#list>
 		) VALUES
 		<foreach item="id" collection="list" separator=",">
@@ -62,7 +62,7 @@
 
 	<!-- 删除 -->
 	<delete id="delete" parameterType="${table.pkColumn.javaType}">
-		DELETE FROM ${table.sqlName?upper_case}
+		DELETE FROM ${table.sqlName}
 		WHERE
 		<#list table.pkColumns as column>
 		${column.sqlName} = <@mapperEl column.columnNameLower/> <#if column_has_next> AND </#if>
@@ -71,7 +71,7 @@
 
 	<!-- 批量删除 -->
 	<delete id="deleteBatch">
-		DELETE FROM ${table.sqlName?upper_case}
+		DELETE FROM ${table.sqlName}
 		WHERE
 		<#if (table.pkColumns?size>1)>
 			<foreach item="id" collection="list" open="(" separator="OR" close=")">
@@ -93,7 +93,7 @@
 
 	<!-- 更新 -->
 	<update id="update" parameterType="${basepackage}.business.${namespace}.entity.${className}">
-		UPDATE ${table.sqlName?upper_case}
+		UPDATE ${table.sqlName}
 		<set>
 			<#list table.notPkColumns as column>
 			<if test="${column.columnNameFirstLower} != null" >
@@ -108,14 +108,14 @@
 	<!-- 查询详情 -->
 	<select id="getObjectByPK"  resultMap="BasicsResultMap" parameterType="${table.pkColumn.javaType}">
 		SELECT <include refid="Basics_columns" />
-		FROM ${table.sqlName?upper_case}
+		FROM ${table.sqlName}
 		WHERE
 			<#list table.pkColumns as column>${column.sqlName} = <@mapperEl 'id'/> <#if column_has_next> AND </#if></#list>
 	</select>
 
 	<!-- 查询列表 -->
 	<select id="queryList"  resultMap="BasicsResultMap" parameterType="${basepackage}.business.${namespace}.entity.${className}">
-		SELECT <include refid="Basics_columns" /> FROM ${table.sqlName?upper_case}
+		SELECT <include refid="Basics_columns" /> FROM ${table.sqlName}
 		<where>
 			<#list table.notPkColumns as column>
 				<if test="${column.columnNameFirstLower} != null" >
@@ -127,7 +127,7 @@
 
 	<!-- 查询总记录数 -->
  	<select id="queryTotal" resultType="int" parameterType="${basepackage}.business.${namespace}.entity.${className}">
-		SELECT COUNT(1) FROM ${table.sqlName?upper_case}
+		SELECT COUNT(1) FROM ${table.sqlName}
 		<where>
 			<#list table.notPkColumns as column>
 				<if test="${column.columnNameFirstLower} != null" >
