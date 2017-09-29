@@ -57,6 +57,8 @@ public abstract class BasicsServiceImpl<T, ID extends Serializable> implements B
 
     @Override
     public T getObjectByPK(ID id) {
+        if(id == null)
+            return null;
         return basicsMapper.getObjectByPK(id);
     }
 
