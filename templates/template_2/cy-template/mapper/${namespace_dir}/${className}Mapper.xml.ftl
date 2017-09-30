@@ -53,9 +53,9 @@
 		INSERT INTO ${table.sqlName} (
 		<#list table.columns as column> ${column.sqlName}<#if column_has_next>,</#if></#list>
 		) VALUES
-		<foreach item="id" collection="list" separator=",">
+		<foreach item="item" collection="list" separator=",">
 		(
-		<#list table.columns as column> <@mapperEl column.columnNameFirstLower/><#if column_has_next>,</#if></#list>
+		<#list table.columns as column> ${r"#{item."}${column.columnNameFirstLower},jdbcType=${column.jdbcType}}<#if column_has_next>,</#if></#list>
 		)
 		</foreach>
 	</insert>
