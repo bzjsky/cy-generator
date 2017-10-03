@@ -17,6 +17,8 @@
 <script src="../../libs/vue.min.js"></script>
 <script src="../../plugins/jqgrid/grid.locale-cn.js"></script>
 <script src="../../plugins/jqgrid/jquery.jqGrid.min.js"></script>
+<script src="../../plugins/jquery-validation/jquery.validate.min.js"></script>
+<script src="../../plugins/jquery-validation/messages_zh.js"></script>
 <script src="../../js/common.js"></script>
 </head>
 <body>
@@ -34,15 +36,15 @@
     <div v-show="!showList" class="panel panel-default">
 		<div class="panel-heading">{{title}}</div>
 		<form class="form-horizontal">
-		<#list table.notPkColumns as column>
-			<#if (!ignore_columns?exists || ignore_columns?index_of(column.columnNameLower) = -1)>
+		<#list table.optionsColumns as column>
+			<#--<#if (!ignore_columns?exists || ignore_columns?index_of(column.columnNameFirstLower) = -1)>-->
 			<div class="form-group">
 				<div class="col-sm-2 control-label <#if !column.nullable>required</#if>">${column.columnAlias}</div>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" v-model="record.${column.columnNameLower}" placeholder="${column.remarks}"/>
+					<input type="text" class="form-control" name="${column.columnNameFirstLower}" v-model="record.${column.columnNameFirstLower}" placeholder="${column.remarks}"/>
 				</div>
 			</div>
-			</#if>
+			<#--</#if>-->
 		</#list>
 			<div class="form-group">
 				<div class="col-sm-2 control-label"></div> 

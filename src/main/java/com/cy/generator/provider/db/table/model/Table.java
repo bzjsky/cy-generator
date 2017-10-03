@@ -7,11 +7,16 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import com.cy.generator.GeneratorConstants;
+import com.cy.generator.GeneratorProperties;
 import com.cy.generator.provider.db.table.model.Column;
 import com.cy.generator.provider.db.table.model.ColumnSet;
 import com.cy.generator.provider.db.table.model.ForeignKeys;
 import com.cy.generator.util.StringHelper;
+import org.apache.commons.lang.StringUtils;
+
 /**
  * 用于生成代码的Table对象.对应数据库的table
  * @author cy
@@ -209,7 +214,18 @@ public class Table implements java.io.Serializable,Cloneable {
 	public List<Column> getNotPkColumns() {
 		return columns.getNotPkColumns();
 	}
-	
+
+	public List<Column> getOptionsColumns(){
+		List<Column> list = getNotPkColumns();
+		String ignore_columns = GeneratorProperties.getProperty(GeneratorConstants.IGNORE_COLUMNS);
+		if(StringUtils.isNotEmpty(ignore_columns)){
+			list = list.stream().filter(item ->
+				!ignore_columns.contains(item.getColumnNameFirstLower())
+			). collect(Collectors.toList());;
+		}
+		return list;
+	}
+
 	/** 得到单主键，等价于getPkColumns().get(0)  */
 	public Column getPkColumn() {
 		Column c = columns.getPkColumn();

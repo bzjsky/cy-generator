@@ -1,5 +1,6 @@
 <#assign className = table.className>
 <#assign classNameLower = className?uncap_first>
+var $from;
 $(function () {
     $("#jqGrid").jqGrid({
         url: baseURL + '${classNameLower}/queryListPage',
@@ -37,6 +38,17 @@ $(function () {
         	$("#jqGrid").closest(".ui-jqgrid-bdiv").css({ "overflow-x" : "hidden" }); 
         }
     });
+	$from =$(".form-horizontal").validate({
+		rules: {
+		<#list table.optionsColumns as column>
+			${column.columnNameLower}: {
+				<#if !column.nullable>
+				required: true,
+				</#if>
+			}<#if column_has_next>,</#if>
+		</#list>
+		},
+	});
 });
 
 var vm = new Vue({
@@ -66,22 +78,24 @@ var vm = new Vue({
             vm.getInfo(id)
 		},
 		saveOrUpdate: function (event) {
-			var url = vm.record.id == null ? "${classNameLower}/save" : "${classNameLower}/modify";
-			$.ajax({
-				type: "POST",
-			    url: baseURL + url,
-                contentType: "application/json",
-			    data: JSON.stringify(vm.record),
-			    success: function(r){
-			    	if(r.code === 0){
-						alert('操作成功', function(index){
-							vm.reload();
-						});
-					}else{
-						alert(r.msg);
+			if(!$from || $from.form()){
+				var url = vm.record.id == null ? "${classNameLower}/save" : "${classNameLower}/modify";
+				$.ajax({
+					type: "POST",
+					url: baseURL + url,
+					contentType: "application/json",
+					data: JSON.stringify(vm.record),
+					success: function(r){
+						if(r.code === 0){
+							alert('操作成功', function(index){
+								vm.reload();
+							});
+						}else{
+							alert(r.msg);
+						}
 					}
-				}
-			});
+				});
+			}
 		},
 		del: function (event) {
 			var ids = getSelectedRows();

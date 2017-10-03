@@ -39,8 +39,9 @@ public enum GeneratorConstants {
             "xml解析时,使用innerXML取一个节点的值,如果false则使用nodeValue. 用途: table.xml配置使用该配置来控制读取方式"),
 
     SQLPARSE_IGNORE_SQL_EXCEPTION_ERROR_CODES("sqlparse_ignore_sql_exception_error_codes", "",
-            "SqlFactory在解析sql时,需要忽略的SQLException的错误码列表,使用逗号分隔多个error codes"), ;
+            "SqlFactory在解析sql时,需要忽略的SQLException的错误码列表,使用逗号分隔多个error codes"),
 
+    IGNORE_COLUMNS("ignore_columns", "", "忽略列");
     public final String code;
     public final String defaultValue;
     public final String desc;

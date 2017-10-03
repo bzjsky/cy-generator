@@ -4,17 +4,15 @@
 
 package ${basepackage}.business.${namespace}.controller;
 
-import javax.annotation.Resource;
-
+import ${basepackage}.business.${namespace}.entity.${className};
+import ${basepackage}.business.${namespace}.service.${className}Service;
+import com.cy.sdk.controller.BasicsController;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 <#if (!table.pkColumn.javaType?contains("lang") && table.pkColumn.javaType?contains("."))>
 import ${javaType};
 </#if>
-import com.cy.sdk.controller.BasicsController;
-import ${basepackage}.business.${namespace}.entity.${className};
-import ${basepackage}.business.${namespace}.service.${className}Service;
 
 /**
 <#include "/java_description.include">
