@@ -442,6 +442,10 @@ public class Column implements java.io.Serializable,Cloneable{
 	public String getValidateString() {
 		return isNullable() ? getNoRequiredValidateString() :  "required " + getNoRequiredValidateString();
 	}
+
+	public String getJqueryValidationString(){
+		return ColumnHelper.getJqueryValidationString(this);
+	}
 	
 	/**得到 rapid-validation的验证表达式: min-value-800  */
 	public String getNoRequiredValidateString() {

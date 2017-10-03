@@ -3,6 +3,10 @@ package com.cy.generator.provider.db.table.model.util;
 import com.cy.generator.provider.db.table.model.Column;
 import com.cy.generator.util.StringHelper;
 import com.cy.generator.util.typemapping.DatabaseDataTypesUtils;
+import org.apache.commons.lang.StringUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ColumnHelper {
 	
@@ -70,5 +74,31 @@ public class ColumnHelper {
 			}
 		}
 		return result;
+	}
+
+	public static String getJqueryValidationString(Column c) {
+		List<String> result = new ArrayList<>();
+		if(!c.isNullable()){
+			result.add("required: true");
+		}
+		if(c.getSqlName().indexOf("mail") >= 0) {
+			result.add("email：true");
+		}
+		if(DatabaseDataTypesUtils.isFloatNumber(c.getJavaType())) {
+			result.add("number:true");
+		}
+		if(DatabaseDataTypesUtils.isString(c.getJavaType()) && c.getSize() > 0){
+			result.add("maxlength:"+(c.getSize()/2-1));
+		}else if(DatabaseDataTypesUtils.isIntegerNumber(c.getJavaType())) {
+			result.add("digits:true");
+			if(c.getJavaType().toLowerCase().indexOf("short") >= 0) {
+				result.add("max:"+Short.MAX_VALUE);
+			}else if(c.getJavaType().toLowerCase().indexOf("integer") >= 0) {
+				result.add("max:"+Short.MAX_VALUE);
+			}else if(c.getJavaType().toLowerCase().indexOf("byte") >= 0) {
+				result.add("max:"+Short.MAX_VALUE);
+			}
+		}
+		return StringUtils.join(result, ",");
 	}
 }

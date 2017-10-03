@@ -42,9 +42,7 @@ $(function () {
 		rules: {
 		<#list table.optionsColumns as column>
 			${column.columnNameLower}: {
-				<#if !column.nullable>
-				required: true,
-				</#if>
+				${column.jqueryValidationString}
 			}<#if column_has_next>,</#if>
 		</#list>
 		},
