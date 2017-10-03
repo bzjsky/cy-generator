@@ -45,7 +45,7 @@ $(function () {
 				${column.jqueryValidationString}
 			}<#if column_has_next>,</#if>
 		</#list>
-		},
+		}
 	});
 });
 
