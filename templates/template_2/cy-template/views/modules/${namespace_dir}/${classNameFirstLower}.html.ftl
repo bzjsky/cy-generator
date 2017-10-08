@@ -22,7 +22,7 @@
 <script src="../../js/common.js"></script>
 </head>
 <body>
-<div id="rrapp" v-cloak>
+<div id="app" v-cloak>
 	<div v-show="showList">
 		<div class="grid-btn">
 			<a v-if="hasPermission('${classNameLower}:save')" class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
@@ -41,7 +41,7 @@
 			<div class="form-group">
 				<div class="col-sm-2 control-label <#if !column.nullable>required</#if>">${column.columnAlias}</div>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" name="${column.columnNameFirstLower}" v-model="record.${column.columnNameFirstLower}" placeholder="${column.remarks}"/>
+					<input type="text" class="form-control validate_${column.columnNameFirstLower}" name="${column.columnNameFirstLower}" v-model="record.${column.columnNameFirstLower}" placeholder="${column.remarks}"/>
 				</div>
 			</div>
 			<#--</#if>-->

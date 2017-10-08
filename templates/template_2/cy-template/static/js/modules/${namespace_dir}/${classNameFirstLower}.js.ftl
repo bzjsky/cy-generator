@@ -1,6 +1,5 @@
 <#assign className = table.className>
 <#assign classNameLower = className?uncap_first>
-var $from;
 $(function () {
     $("#jqGrid").jqGrid({
         url: baseURL + '${classNameLower}/queryListPage',
@@ -38,19 +37,17 @@ $(function () {
         	$("#jqGrid").closest(".ui-jqgrid-bdiv").css({ "overflow-x" : "hidden" }); 
         }
     });
-	$from =$(".form-horizontal").validate({
-		rules: {
+	jQuery.validator.addClassRules({
 		<#list table.optionsColumns as column>
-			${column.columnNameLower}: {
-				${column.jqueryValidationString}
-			}<#if column_has_next>,</#if>
+        validate_${column.columnNameLower}: {
+			${column.jqueryValidationString}
+		}<#if column_has_next>,</#if>
 		</#list>
-		}
 	});
 });
 
 var vm = new Vue({
-	el:'#rrapp',
+	el:'#app',
 	data:{
 		showList: true,
 		title: null,
@@ -76,7 +73,7 @@ var vm = new Vue({
             vm.getInfo(id)
 		},
 		saveOrUpdate: function (event) {
-			if(!$from || $from.form()){
+			if($(".form-horizontal").validate({rules: {}}).form()){
 				var url = vm.record.id == null ? "${classNameLower}/save" : "${classNameLower}/modify";
 				$.ajax({
 					type: "POST",
@@ -130,9 +127,6 @@ var vm = new Vue({
 			$("#jqGrid").jqGrid('setGridParam',{ 
                 page:page
             }).trigger("reloadGrid");
-		},
-	    hasPermission: function () {
-			return true;
 		}
 	}
 });
