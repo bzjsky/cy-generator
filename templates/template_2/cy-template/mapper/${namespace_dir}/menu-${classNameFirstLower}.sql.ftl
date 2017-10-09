@@ -16,7 +16,7 @@ set @parentId = @@identity;
 
 -- 菜单对应按钮SQL
 INSERT INTO `sys_menu` (`parent_id`, `name`, `url`, `perms`, `type`, `icon`, `order_num`)
-    SELECT @parentId, '查看', null, '${classNameLower}:queryListPage,${classNameLower}:getById', '2', null, '6';
+    SELECT @parentId, '查看', null, '${classNameLower}:queryListPage,${classNameLower}:queryList,${classNameLower}:getById', '2', null, '6';
 INSERT INTO `sys_menu` (`parent_id`, `name`, `url`, `perms`, `type`, `icon`, `order_num`)
     SELECT @parentId, '新增', null, '${classNameLower}:save,${classNameLower}:saveBatch', '2', null, '6';
 INSERT INTO `sys_menu` (`parent_id`, `name`, `url`, `perms`, `type`, `icon`, `order_num`)
