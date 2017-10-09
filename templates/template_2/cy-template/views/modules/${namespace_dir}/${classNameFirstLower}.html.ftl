@@ -39,7 +39,7 @@
 		<#list table.optionsColumns as column>
 			<#--<#if (!ignore_columns?exists || ignore_columns?index_of(column.columnNameFirstLower) = -1)>-->
 			<div class="form-group">
-				<div class="col-sm-2 control-label <#if !column.nullable>required</#if>">${column.columnAlias}</div>
+				<div class="col-sm-2 control-label<#if !column.nullable> required</#if>">${column.columnAlias}</div>
 				<div class="col-sm-10">
 					<input type="text" class="form-control validate_${column.columnNameFirstLower}" name="${column.columnNameFirstLower}" v-model="record.${column.columnNameFirstLower}" placeholder="${column.remarks}"/>
 				</div>
