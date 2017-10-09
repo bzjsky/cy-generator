@@ -123,6 +123,7 @@
 				</if>
 			</#list>
 		</where>
+		${table.defaultOrder}
 	</select>
 
 	<!-- 查询总记录数 -->

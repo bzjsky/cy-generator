@@ -373,4 +373,18 @@ public class Table implements java.io.Serializable,Cloneable {
 	public    static final String FKTABLE_NAME  = "FKTABLE_NAME";
 	public    static final String FKCOLUMN_NAME = "FKCOLUMN_NAME";
 	public    static final String KEY_SEQ       = "KEY_SEQ";
+
+	public String getDefaultOrder(){
+		final StringBuffer defaultOrder = new StringBuffer();
+		List<Column> columns = getNotPkColumns();
+		columns.forEach(item -> {
+			if(item.getSqlName().equals("orders")) {
+				defaultOrder.setLength(0);
+				defaultOrder.append("ORDER BY orders");
+			}else if(defaultOrder.length() == 0 && item.getSqlName().equals("modify_date")) {
+				defaultOrder.append("ORDER BY modify_date DESC");
+			}
+		});
+		return defaultOrder.toString();
+	}
 }
