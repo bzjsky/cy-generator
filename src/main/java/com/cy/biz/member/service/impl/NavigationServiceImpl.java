@@ -3,11 +3,11 @@
  *  
  * Since 2017 - 2017
  */
-package com.cy.business.member.service.impl;
+package com.cy.biz.member.service.impl;
 
 import org.springframework.stereotype.Service;
-import com.cy.business.member.service.NavigationService;
-import com.cy.business.member.entity.Navigation;
+import com.cy.biz.member.service.NavigationService;
+import com.cy.biz.member.entity.Navigation;
 import com.cy.sdk.service.impl.BasicsServiceImpl;
 
 /**

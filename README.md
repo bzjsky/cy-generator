@@ -15,7 +15,7 @@
 **项目结构** 
 ```
 cy-generator
-├─business 业务模块（copy生成的java文件到此目录）
+├─biz 业务模块（copy生成的java文件到此目录）
 │ 
 ├─generator 代码生成工具类
 │ 

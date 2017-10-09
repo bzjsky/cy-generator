@@ -3,11 +3,11 @@
  *  
  * Since 2017 - 2017
  */
-package com.cy.business.member.mapper;
+package com.cy.biz.member.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.cy.business.member.entity.Navigation;
+import com.cy.biz.member.entity.Navigation;
 import com.cy.sdk.mapper.BasicsMapper;
 
 /**

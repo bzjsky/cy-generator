@@ -3,9 +3,9 @@
  *  
  * Since 2017 - 2017
  */
-package com.cy.business.member.service;
+package com.cy.biz.member.service;
 
-import com.cy.business.member.entity.Navigation;
+import com.cy.biz.member.entity.Navigation;
 import com.cy.sdk.service.BasicsService;
 
 /**

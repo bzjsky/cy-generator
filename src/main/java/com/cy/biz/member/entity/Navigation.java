@@ -3,14 +3,13 @@
  *  
  * Since 2017 - 2017
  */
-package com.cy.business.member.entity;
+package com.cy.biz.member.entity;
 
 import javax.validation.constraints.*;
 import org.hibernate.validator.constraints.*;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
-import java.util.Date;
 import com.cy.sdk.entity.BasicsEntity;
 
 /**

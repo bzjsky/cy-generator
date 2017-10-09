@@ -3,16 +3,16 @@
  *  
  * Since 2017 - 2017
  */
-package com.cy.business.member.controller;
+package com.cy.biz.member.controller;
 
 import javax.annotation.Resource;
 
+import com.cy.biz.member.entity.Navigation;
+import com.cy.biz.member.service.NavigationService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cy.sdk.controller.BasicsController;
-import com.cy.business.member.entity.Navigation;
-import com.cy.business.member.service.NavigationService;
 
 /**
  * 导航
