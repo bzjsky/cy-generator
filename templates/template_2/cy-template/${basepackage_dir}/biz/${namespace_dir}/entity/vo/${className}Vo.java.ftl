@@ -3,9 +3,9 @@
 <#assign className = table.className>   
 <#assign classNameLower = className?uncap_first>
 
-package ${basepackage}.business.${namespace}.entity.vo;
+package ${basepackage}.biz.${namespace}.entity.vo;
 
-import ${basepackage}.business.${namespace}.entity.${className};
+import ${basepackage}.biz.${namespace}.entity.${className};
 
 /**
 <#include "/java_description.include">

@@ -2,10 +2,10 @@
 <#assign className = table.className>   
 <#assign classNameLower = className?uncap_first>
 
-package ${basepackage}.business.${namespace}.controller;
+package ${basepackage}.biz.${namespace}.controller;
 
-import ${basepackage}.business.${namespace}.entity.${className};
-import ${basepackage}.business.${namespace}.service.${className}Service;
+import ${basepackage}.biz.${namespace}.entity.${className};
+import ${basepackage}.biz.${namespace}.service.${className}Service;
 import com.cy.sdk.controller.BasicsController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

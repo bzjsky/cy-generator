@@ -2,11 +2,11 @@
 <#assign className = table.className>   
 <#assign classNameLower = className?uncap_first>
 
-package ${basepackage}.business.${namespace}.mapper;
+package ${basepackage}.biz.${namespace}.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import ${basepackage}.business.${namespace}.entity.${className};
+import ${basepackage}.biz.${namespace}.entity.${className};
 <#if (!table.pkColumn.javaType?contains("lang") && table.pkColumn.javaType?contains("."))>
 import ${javaType};
 </#if>

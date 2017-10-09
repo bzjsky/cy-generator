@@ -2,11 +2,11 @@
 <#assign className = table.className>   
 <#assign classNameLower = className?uncap_first>
 
-package ${basepackage}.business.${namespace}.service.impl;
+package ${basepackage}.biz.${namespace}.service.impl;
 
 import org.springframework.stereotype.Service;
-import ${basepackage}.business.${namespace}.service.${className}Service;
-import ${basepackage}.business.${namespace}.entity.${className};
+import ${basepackage}.biz.${namespace}.service.${className}Service;
+import ${basepackage}.biz.${namespace}.entity.${className};
 <#if (!table.pkColumn.javaType?contains("lang") && table.pkColumn.javaType?contains("."))>
         import ${javaType};
 </#if>

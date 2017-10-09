@@ -5,10 +5,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <#macro mapperEl value>${r"#{"}${value}}</#macro>
-<mapper namespace="${basepackage}.business.${namespace}.mapper.${className}Mapper">
+<mapper namespace="${basepackage}.biz.${namespace}.mapper.${className}Mapper">
 
 	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="${basepackage}.business.${namespace}.entity.${className}" id="BasicsResultMap">
+    <resultMap type="${basepackage}.biz.${namespace}.entity.${className}" id="BasicsResultMap">
 		<#list table.pkColumns as column>
 		<id property="${column.columnNameLower}" column="${column.sqlName}" />
 		</#list>
@@ -23,7 +23,7 @@
 	</sql>
 
 	<!-- 新增 useGeneratedKeys="true"(主键自增)  keyProperty="xxx" for sqlserver and mysql -->
-	<insert id="insert" useGeneratedKeys="true" keyProperty="${table.pkColumn.columnNameFirstLower}" parameterType="${basepackage}.business.${namespace}.entity.${className}">
+	<insert id="insert" useGeneratedKeys="true" keyProperty="${table.pkColumn.columnNameFirstLower}" parameterType="${basepackage}.biz.${namespace}.entity.${className}">
 		INSERT INTO ${table.sqlName}
 		<trim prefix="(" suffix=")" suffixOverrides="," >
 		<#list table.notPkColumns as column>
@@ -49,7 +49,7 @@
 	</insert>
 
 	<!-- 批量新增 -->
-	<insert id="insertBatch" parameterType="${basepackage}.business.${namespace}.entity.${className}">
+	<insert id="insertBatch" parameterType="${basepackage}.biz.${namespace}.entity.${className}">
 		INSERT INTO ${table.sqlName} (
 		<#list table.columns as column> ${column.sqlName}<#if column_has_next>,</#if></#list>
 		) VALUES
@@ -92,7 +92,7 @@
 
 
 	<!-- 更新 -->
-	<update id="update" parameterType="${basepackage}.business.${namespace}.entity.${className}">
+	<update id="update" parameterType="${basepackage}.biz.${namespace}.entity.${className}">
 		UPDATE ${table.sqlName}
 		<set>
 			<#list table.notPkColumns as column>
@@ -114,7 +114,7 @@
 	</select>
 
 	<!-- 查询列表 -->
-	<select id="queryList"  resultMap="BasicsResultMap" parameterType="${basepackage}.business.${namespace}.entity.${className}">
+	<select id="queryList"  resultMap="BasicsResultMap" parameterType="${basepackage}.biz.${namespace}.entity.${className}">
 		SELECT <include refid="Basics_columns" /> FROM ${table.sqlName}
 		<where>
 			<#list table.notPkColumns as column>
@@ -126,7 +126,7 @@
 	</select>
 
 	<!-- 查询总记录数 -->
- 	<select id="queryTotal" resultType="int" parameterType="${basepackage}.business.${namespace}.entity.${className}">
+ 	<select id="queryTotal" resultType="int" parameterType="${basepackage}.biz.${namespace}.entity.${className}">
 		SELECT COUNT(1) FROM ${table.sqlName}
 		<where>
 			<#list table.notPkColumns as column>

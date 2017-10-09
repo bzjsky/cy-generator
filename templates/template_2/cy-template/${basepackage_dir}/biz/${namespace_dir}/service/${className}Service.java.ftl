@@ -2,9 +2,9 @@
 <#assign className = table.className>   
 <#assign classNameLower = className?uncap_first>
 
-package ${basepackage}.business.${namespace}.service;
+package ${basepackage}.biz.${namespace}.service;
 
-import ${basepackage}.business.${namespace}.entity.${className};
+import ${basepackage}.biz.${namespace}.entity.${className};
 <#if (!table.pkColumn.javaType?contains("lang") && table.pkColumn.javaType?contains("."))>
 import ${javaType};
 </#if>

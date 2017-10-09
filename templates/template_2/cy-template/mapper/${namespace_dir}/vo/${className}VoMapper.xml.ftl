@@ -5,10 +5,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <#macro mapperEl value>${r"#{"}${value}}</#macro>
-<mapper namespace="${basepackage}.business.${namespace}.mapper.${className}Mapper">
+<mapper namespace="${basepackage}.biz.${namespace}.mapper.${className}Mapper">
 
 	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="${basepackage}.business.${namespace}.entity.vo.${className}Vo" id="BasicsVoResultMap" extends="BasicsResultMap">
+    <resultMap type="${basepackage}.biz.${namespace}.entity.vo.${className}Vo" id="BasicsVoResultMap" extends="BasicsResultMap">
     </resultMap>
 
 </mapper>
