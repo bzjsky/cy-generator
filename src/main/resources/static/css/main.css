@@ -52,3 +52,9 @@ tbody > tr > th {font-weight: normal; }
 .form-horizontal{
 	width:550px;padding-top:20px;
 }
+.error{
+    color: #ff0000;
+}
+input.error{
+    border-color: #ff0000;
+}

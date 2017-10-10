@@ -1,7 +1,5 @@
 package com.cy.sdk.mapper;
 
-import org.apache.ibatis.annotations.Mapper;
-
 import java.io.Serializable;
 import java.util.List;
 

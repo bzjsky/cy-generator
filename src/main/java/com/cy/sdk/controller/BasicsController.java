@@ -8,11 +8,11 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.io.Serializable;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -39,6 +39,7 @@ public abstract class BasicsController<T extends BasicsEntity, ID extends Serial
     public Message save(@RequestBody T t){
         try {
             t.setCreateDate(new Date());
+            t.setModifyDate(t.getCreateDate());
             return Message.status(basicsService.insert(t));
         } catch (Exception e){
             logger.error("保存异常：===》 " + e);
@@ -97,6 +98,16 @@ public abstract class BasicsController<T extends BasicsEntity, ID extends Serial
             return Message.success(basicsService.getObjectByPK(id));
         } catch (Exception e){
             logger.error("查询详情异常：===》 " + e);
+            return Message.exception(e.getMessage());
+        }
+    }
+
+    @RequestMapping("queryList")
+    public Message queryList(T t){
+        try {
+            return Message.success(basicsService.queryList(t));
+        } catch (Exception e){
+            logger.error("查询列表异常：===》 " + e);
             return Message.exception(e.getMessage());
         }
     }

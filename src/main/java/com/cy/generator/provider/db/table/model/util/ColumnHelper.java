@@ -79,16 +79,16 @@ public class ColumnHelper {
 	public static String getJqueryValidationString(Column c) {
 		List<String> result = new ArrayList<>();
 		if(!c.isNullable()){
-			result.add("required: true");
+			result.add("required:true");
 		}
 		if(c.getSqlName().indexOf("mail") >= 0) {
-			result.add("email：true");
+			result.add("email:true");
 		}
 		if(DatabaseDataTypesUtils.isFloatNumber(c.getJavaType())) {
 			result.add("number:true");
 		}
 		if(DatabaseDataTypesUtils.isString(c.getJavaType()) && c.getSize() > 0){
-			result.add("maxlength:"+(c.getSize()/2-1));
+			result.add("maxlength:"+(c.getSize()%2 == 0 ? c.getSize()/2 : c.getSize()/2-1));
 		}else if(DatabaseDataTypesUtils.isIntegerNumber(c.getJavaType())) {
 			result.add("digits:true");
 			if(c.getJavaType().toLowerCase().indexOf("short") >= 0) {

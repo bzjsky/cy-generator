@@ -44,6 +44,7 @@ $(function () {
 		}<#if column_has_next>,</#if>
 		</#list>
 	});
+	$form = $(".form-horizontal").validate({rules: {}});
 });
 
 var vm = new Vue({
@@ -58,7 +59,7 @@ var vm = new Vue({
 			vm.reload();
 		},
 		add: function(){
-			vm.showList = false;
+			vm.initForm();
 			vm.title = "新增";
 			vm.record = {};
 		},
@@ -67,13 +68,18 @@ var vm = new Vue({
 			if(id == null){
 				return ;
 			}
-			vm.showList = false;
+			vm.initForm();
             vm.title = "修改";
             
             vm.getInfo(id)
 		},
+		initForm: function () {
+			vm.showList = false;
+			$form.resetForm();
+			$form.resetElements($("input.error"));
+		},
 		saveOrUpdate: function (event) {
-			if($(".form-horizontal").validate({rules: {}}).form()){
+			if($form.form()){
 				var url = vm.record.id == null ? "${classNameLower}/save" : "${classNameLower}/modify";
 				$.ajax({
 					type: "POST",
