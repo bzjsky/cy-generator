@@ -1,4 +1,3 @@
--- 菜单SQL
 <#assign className = table.className>
 <#assign classNameLower = className?uncap_first>
 -- 菜单SQL
