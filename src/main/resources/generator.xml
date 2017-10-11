@@ -11,7 +11,7 @@
     <entry key="basepackage">com.cy</entry>  
 
     <!-- 业务模块 -->
-    <entry key="namespace">goods</entry>
+    <entry key="namespace">member</entry>
 
     <!-- 是否覆盖输出文件,默认值是false -->
     <entry key="gg_isOverride">true</entry>
