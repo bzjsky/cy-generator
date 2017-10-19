@@ -8,7 +8,7 @@
 <mapper namespace="${basepackage}.biz.${namespace}.mapper.${className}Mapper">
 
 	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="${basepackage}.biz.${namespace}.entity.${className}" id="BasicsResultMap">
+    <resultMap type="${basepackage}.biz.${namespace}.entity.vo.${className}Vo" id="BasicsResultMap">
 		<#list table.pkColumns as column>
 		<id property="${column.columnNameLower}" column="${column.sqlName}" />
 		</#list>

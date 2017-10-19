@@ -4,7 +4,7 @@
 
 package ${basepackage}.biz.${namespace}.controller;
 
-import ${basepackage}.biz.${namespace}.entity.${className};
+import ${basepackage}.biz.${namespace}.entity.vo.${className}Vo;
 import ${basepackage}.biz.${namespace}.service.${className}Service;
 import com.cy.sdk.controller.BasicsController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ import ${javaType};
  */
 @RestController
 @RequestMapping("${classNameLower}")
-public class ${className}Controller extends BasicsController<${className}, ${table.pkColumn.simpleJavaType}>{
+public class ${className}Controller extends BasicsController<${className}Vo, ${table.pkColumn.simpleJavaType}>{
 
 	@Autowired
 	${className}Service ${classNameLower}Service;
