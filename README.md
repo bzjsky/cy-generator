@@ -40,7 +40,7 @@ cy-generator
 
 **模版二适用项目**
 - spring boot spring mvc mybatis 
-- 如：[renren-fast](http://git.oschina.net/babaio/renren-fast/tree/master)
+- 如：[renren-fast](http://gitee.com/babaio/renren-fast/tree/master)
 
 **适用以下数据库生成**
 - mysql
@@ -69,5 +69,5 @@ cy-generator
 - menu.sql 菜单及功能按钮权限相关
 
 **其它**
-- 码云仓库:http://git.oschina.net/bzj/cy-generator
+- 码云仓库:http://gitee.com/bzj/cy-generator
 - github仓库：https://github.com/bzjsky/cy-generator 
