@@ -37,13 +37,20 @@ public abstract class BasicsServiceImpl<T, ID extends Serializable> implements B
     @Override
     @Transactional
     public boolean delete(ID id) {
+        if(id == null)
+            return false;
         return basicsMapper.delete(id) > 0;
     }
 
     @Override
     @Transactional
     public boolean deleteBatch(List<ID> ids) {
-        return basicsMapper.deleteBatch(ids) > 0;
+        if(ids == null || ids.isEmpty())
+            return false;
+        if(ids.size() == 1)
+            return delete(ids.get(0));
+        else
+            return basicsMapper.deleteBatch(ids) > 0;
     }
 
     @Override
