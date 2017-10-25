@@ -116,26 +116,23 @@
 	<!-- 查询列表 -->
 	<select id="queryList"  resultMap="BasicsResultMap" parameterType="${basepackage}.biz.${namespace}.entity.${className}">
 		SELECT <include refid="Basics_columns" /> FROM ${table.sqlName}
-		<where>
-			<#list table.notPkColumns as column>
-				<if test="${column.columnNameFirstLower} != null" >
-					AND ${column.sqlName} = <@mapperEl column.columnNameFirstLower/>
-				</if>
-			</#list>
-		</where>
+        <include refid="condition"/>
 		${table.defaultOrder}
 	</select>
 
 	<!-- 查询总记录数 -->
  	<select id="queryTotal" resultType="int" parameterType="${basepackage}.biz.${namespace}.entity.${className}">
 		SELECT COUNT(1) FROM ${table.sqlName}
-		<where>
-			<#list table.notPkColumns as column>
-				<if test="${column.columnNameFirstLower} != null" >
-					AND ${column.sqlName} = <@mapperEl column.columnNameFirstLower/>
-				</if>
-			</#list>
-		</where>
+        <include refid="condition"/>
 	</select>
 
+    <sql id="condition">
+        <where>
+		<#list table.notPkColumns as column>
+            <if test="${column.columnNameFirstLower} != null" >
+                AND ${column.sqlName} = <@mapperEl column.columnNameFirstLower/>
+            </if>
+		</#list>
+        </where>
+	</sql>
 </mapper>
