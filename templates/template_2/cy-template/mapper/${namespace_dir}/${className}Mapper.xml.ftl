@@ -130,7 +130,11 @@
         <where>
 		<#list table.notPkColumns as column>
             <if test="${column.columnNameFirstLower} != null" >
-                AND ${column.sqlName} = <@mapperEl column.columnNameFirstLower/>
+			<#if column.isStringColumn>
+				AND ${column.sqlName} LIKE T CONCAT('%', <@mapperEl column.columnNameFirstLower/>, '%')
+			<#else>
+				AND ${column.sqlName} = <@mapperEl column.columnNameFirstLower/>
+			</#if>
             </if>
 		</#list>
         </where>
