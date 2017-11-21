@@ -25,9 +25,9 @@
 <div id="app" v-cloak>
 	<div v-show="showList">
 		<div class="grid-btn">
-			<a v-if="hasPermission('${classNameLower}:save')" class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+			<a v-if="hasPermission('${classNameLower}:save')" class="btn btn-success" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
 			<a v-if="hasPermission('${classNameLower}:modify')" class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
-			<a v-if="hasPermission('${classNameLower}:remove')" class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+			<a v-if="hasPermission('${classNameLower}:remove')" class="btn btn-danger" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
 		</div>
 	    <table id="jqGrid"></table>
 	    <div id="jqGridPager"></div>
