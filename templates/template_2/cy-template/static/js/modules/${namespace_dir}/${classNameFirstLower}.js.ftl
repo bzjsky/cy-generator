@@ -52,6 +52,7 @@ var vm = new Vue({
 	data:{
 		showList: true,
 		title: null,
+		q:{},
 		record: {}
 	},
 	methods: {
@@ -130,7 +131,8 @@ var vm = new Vue({
 		reload: function (event) {
 			vm.showList = true;
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
-			$("#jqGrid").jqGrid('setGridParam',{ 
+			$("#jqGrid").jqGrid('setGridParam',{
+				postData:vm.q,
                 page:page
             }).trigger("reloadGrid");
 		}

@@ -28,6 +28,9 @@ html { overflow-x:hidden; }
     margin-bottom:12px;
     overflow:hidden;
 }
+.grid-btn .form-control{
+    margin-right: 5px;
+}
 .grid-btn .btn{
     margin-right:10px;
 }
