@@ -12,8 +12,6 @@ import ${basepackage}.biz.${namespace}.entity.${className};
  */
 public class ${className}Vo extends ${className}{
 
-	private static final long serialVersionUID = 1L;
-
 }
 
 

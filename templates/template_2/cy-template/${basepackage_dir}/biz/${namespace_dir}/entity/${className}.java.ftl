@@ -22,7 +22,6 @@ import com.cy.sdk.entity.BasicsEntity;
  */
 public class ${className} extends BasicsEntity{
 
-	private static final long serialVersionUID = 1L;
 	<#list table.columns as column>
 	<#if (!ignore_columns?exists || ignore_columns?index_of(column.columnNameLower) = -1)>
     /**
