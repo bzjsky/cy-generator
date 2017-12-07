@@ -1,24 +1,28 @@
 package com.cy;
 
+import com.cy.generator.GeneratorConstants;
 import com.cy.generator.GeneratorFacade;
+import com.cy.generator.GeneratorProperties;
+import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
 
 /**
  *
  * @author cy
- * @email bzjsky@sina.com
+ * @git https://gitee.com/bzj/cy-generator
  */
 public class GenApplication {
 
     private static final String TEMPLATE_PATH =  "templates";
     private static final String OUTROOT_PATH =  "outRoot";
 
-    public enum TemplateEnum{
-        /** 模版一 */
+/*    public enum TemplateEnum{
+        *//** 模版一 *//*
         TEMPLATE_1("template_1"),
-        /** 模版二 适用renren-fast项目 */
-        TEMPLATE_2("template_2");
+        *//** 模版二 适用renren-fast项目 *//*
+        TEMPLATE_2("template_2"),
+        TEMPLATE_3("template_3");
         private String path;
         private TemplateEnum(String path){
             this.path = path;
@@ -26,25 +30,20 @@ public class GenApplication {
         public String getPath() {
             return path;
         }
-    }
+    }*/
 
     public static void main(String[] args) throws Exception {
 
         GeneratorFacade g = new GeneratorFacade();
-        TemplateEnum template = TemplateEnum.TEMPLATE_2;
-        g.getGenerator().addTemplateRootDir(g.getGenerator().getOutRootDir() + File.separator + TEMPLATE_PATH
-                + File.separator + template.getPath());
-
-        g.getGenerator().setOutRootDir(g.getGenerator().getOutRootDir() + File.separator + OUTROOT_PATH
-                + File.separator + template.getPath());
+        g.getGenerator().addTemplateRootDir(g.getGenerator().getTemplateDir());
+        g.getGenerator().setOutRootDir(g.getGenerator().getOutRootDir() + File.separator + OUTROOT_PATH);
 
         // 通过数据库表生成文件
-        g.generateByTable("`cy_specification`",
-                "`cy_specification_value`",
-                "`cy_goods`",
-                "`cy_product`",
-                "`cy_product_specification`",
-                "`cy_product_specification_value`");
+        String generatorTables = GeneratorProperties.getProperty(GeneratorConstants.GENERATOR_TABLES);
+        if(StringUtils.isNotEmpty(generatorTables)){
+            g.generateByTable(generatorTables.split(","));
+        }
+
 
         // 删除生成器的输出目录//
         // g.deleteOutRootDir();
