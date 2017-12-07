@@ -3,6 +3,7 @@ package com.cy;
 import com.cy.generator.GeneratorConstants;
 import com.cy.generator.GeneratorFacade;
 import com.cy.generator.GeneratorProperties;
+import com.cy.generator.util.GLogger;
 import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
@@ -34,6 +35,7 @@ public class GenApplication {
 
     public static void main(String[] args) throws Exception {
 
+        GLogger.println("generator by https://gitee.com/bzj/cy-generator");
         GeneratorFacade g = new GeneratorFacade();
         g.getGenerator().addTemplateRootDir(g.getGenerator().getTemplateDir());
         g.getGenerator().setOutRootDir(g.getGenerator().getOutRootDir() + File.separator + OUTROOT_PATH);
