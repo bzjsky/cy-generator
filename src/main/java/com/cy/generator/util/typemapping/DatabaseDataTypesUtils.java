@@ -6,7 +6,7 @@ import java.util.HashMap;
 /**
  * 
  * @author cy
- * @email bzjsky@sina.com
+ * @git https://gitee.com/bzj/cy-generator
  */
 public class DatabaseDataTypesUtils {
 

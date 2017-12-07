@@ -45,7 +45,7 @@ import freemarker.template.TemplateException;
  * </pre>
  * 
  * @author cy
- * @email bzjsky@sina.com
+ * @git https://gitee.com/bzj/cy-generator
  */
 
 @SuppressWarnings("all")
@@ -53,6 +53,7 @@ public class Generator {
     private static final String GENERATOR_INSERT_LOCATION       = "generator-insert-location";
     private ArrayList<File>     templateRootDirs                = new ArrayList<File>();
     private String              outRootDir;
+    private String              templateDir;
     private boolean             ignoreTemplateGenerateException = true;
     private String              removeExtensions                = GeneratorProperties
                                                                         .getProperty(GENERATOR_REMOVE_EXTENSIONS);
@@ -155,8 +156,21 @@ public class Generator {
     }
 
     public String getOutRootDir() {
-        //		if(outRootDir == null) throw new IllegalStateException("'outRootDir' property must be not null.");
+        if(outRootDir == null)
+            throw new IllegalStateException("'outRootDir' property must be not null.");
         return outRootDir;
+    }
+
+    public String getTemplateDir() {
+        if(templateDir == null)
+            throw new IllegalStateException("'templateDir' property must be not null.");
+        return templateDir;
+    }
+
+    public void setTemplateDir(String templateDir) {
+        if(outRootDir == null)
+            throw new IllegalStateException("'templateDir' property must be not null.");
+        this.templateDir = templateDir;
     }
 
     public void setRemoveExtensions(String removeExtensions) {

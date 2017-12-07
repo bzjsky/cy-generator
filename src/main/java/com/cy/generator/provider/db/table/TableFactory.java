@@ -15,6 +15,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import com.cy.generator.GeneratorConstants;
 import com.cy.generator.GeneratorProperties;
@@ -40,7 +41,7 @@ import org.apache.commons.lang.StringUtils;
  * getAllTable() : 搜索数据库的所有表,并得到table对象列表
  * </pre>
  * @author cy
- * @email bzjsky@sina.com
+ * @git https://gitee.com/bzj/cy-generator
  */
 public class TableFactory {
 	
@@ -329,9 +330,14 @@ public class TableFactory {
 		      List columns = getTableColumns(table, primaryKeys, indices, uniqueIndices, uniqueColumns);
 	
 		      for (Iterator i = columns.iterator(); i.hasNext(); ) {
-		         Column column = (Column)i.next();
-		         table.addColumn(column);
-		         table.addJavaType(column.getJavaType());
+
+		      	Column column = (Column)i.next();
+		        table.addColumn(column);
+
+				String ignore_columns = GeneratorProperties.getProperty(GeneratorConstants.IGNORE_COLUMNS);
+				if(StringUtils.isEmpty(ignore_columns) || !ignore_columns.contains(column.getColumnNameFirstLower()))
+				 table.addJavaType(column.getJavaType());
+
 		      }
 	
 		      // In case none of the columns were primary keys, issue a warning.

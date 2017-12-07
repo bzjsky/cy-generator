@@ -20,7 +20,7 @@ import org.apache.commons.lang.StringUtils;
 /**
  * 用于生成代码的Table对象.对应数据库的table
  * @author cy
- * @email bzjsky@sina.com
+ * @git https://gitee.com/bzj/cy-generator
  */
 public class Table implements java.io.Serializable,Cloneable {
 

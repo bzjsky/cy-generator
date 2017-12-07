@@ -1,32 +1,16 @@
 package com.cy.generator;
 
-import static com.cy.generator.GeneratorConstants.*;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import com.cy.generator.Generator;
 import com.cy.generator.Generator.GeneratorModel;
-import com.cy.generator.GeneratorConstants;
-import com.cy.generator.GeneratorContext;
-import com.cy.generator.GeneratorProperties;
 import com.cy.generator.provider.db.sql.model.Sql;
 import com.cy.generator.provider.db.table.TableFactory;
 import com.cy.generator.provider.db.table.model.Table;
 import com.cy.generator.provider.java.model.JavaClass;
-import com.cy.generator.util.BeanHelper;
-import com.cy.generator.util.ClassHelper;
-import com.cy.generator.util.GLogger;
-import com.cy.generator.util.GeneratorException;
-import com.cy.generator.util.StringHelper;
+import com.cy.generator.util.*;
+
+import java.io.*;
+import java.util.*;
+
+import static com.cy.generator.GeneratorConstants.GENERATOR_TOOLS_CLASS;
 
 /**
  * 代码生成器的主要入口类,包装相关方法供外部生成代码使用 使用GeneratorFacade之前，需要设置Generator的相关属性
@@ -38,8 +22,11 @@ public class GeneratorFacade {
     private com.cy.generator.Generator generator = new com.cy.generator.Generator();
 
     public GeneratorFacade() {
-        if (StringHelper.isNotBlank(GeneratorProperties.getProperty("outRoot"))) {
-            generator.setOutRootDir(GeneratorProperties.getProperty("outRoot"));
+        if (StringHelper.isNotBlank(GeneratorProperties.getProperty("outRootDir"))) {
+            generator.setOutRootDir(GeneratorProperties.getProperty("outRootDir"));
+        }
+        if (StringHelper.isNotBlank(GeneratorProperties.getProperty("templateDir"))) {
+            generator.setTemplateDir(GeneratorProperties.getProperty("templateDir"));
         }
     }
 

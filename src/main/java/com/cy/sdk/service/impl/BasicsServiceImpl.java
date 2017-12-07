@@ -13,7 +13,7 @@ import java.util.List;
 /**
  *
  * @author cy
- * @email bzjsky@sina.com
+ * @git https://gitee.com/bzj/cy-generator
  * @param <T>
  * @param <ID>
  */

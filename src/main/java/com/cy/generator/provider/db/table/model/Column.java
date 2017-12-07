@@ -19,7 +19,7 @@ import com.cy.generator.util.typemapping.JdbcType;
 /**
  * 用于生成代码的Columb对象.对应数据库表column
  * @author cy
- * @email bzjsky@sina.com
+ * @git https://gitee.com/bzj/cy-generator
  */
 public class Column implements java.io.Serializable,Cloneable{
 	/**

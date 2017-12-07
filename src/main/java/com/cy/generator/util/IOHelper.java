@@ -20,7 +20,7 @@ import java.util.List;
 /**
  * 
  * @author cy
- * @email bzjsky@sina.com
+ * @git https://gitee.com/bzj/cy-generator
  */
 public class IOHelper {
 	public static Writer NULL_WRITER = new NullWriter();

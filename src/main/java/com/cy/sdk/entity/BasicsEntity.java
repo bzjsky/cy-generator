@@ -7,7 +7,7 @@ import java.util.Date;
 
 /**
  * @author cy
- * @email bzjsky@sina.com
+ * @git https://gitee.com/bzj/cy-generator
  */
 public class BasicsEntity implements Serializable {
     /**

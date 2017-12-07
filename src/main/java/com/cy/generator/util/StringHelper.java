@@ -20,7 +20,7 @@ import com.cy.generator.util.Inflector;
 /**
  * 
  * @author cy
- * @email bzjsky@sina.com
+ * @git https://gitee.com/bzj/cy-generator
  */
 public class StringHelper {
 	private static final String FOLDER_SEPARATOR = "/";

@@ -23,7 +23,7 @@ import java.util.Set;
 /**
  * 
  * @author cy
- * @email bzjsky@sina.com
+ * @git https://gitee.com/bzj/cy-generator
  */
 public class FileHelper {
 	/**

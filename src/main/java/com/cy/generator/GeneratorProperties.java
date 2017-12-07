@@ -19,7 +19,7 @@ import com.cy.generator.util.typemapping.DatabaseTypeUtils;
  * 生成器配置类
  * 用于装载generator.properties,generator.xml文件
  * @author cy
- * @email bzjsky@sina.com
+ * @git https://gitee.com/bzj/cy-generator
  */
 public class GeneratorProperties {
 	
