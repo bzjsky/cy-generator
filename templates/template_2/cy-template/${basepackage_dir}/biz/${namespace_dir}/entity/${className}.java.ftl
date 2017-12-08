@@ -20,7 +20,7 @@ import com.cy.sdk.entity.BasicsEntity;
 /**
 <#include "/java_description.include">
  */
-public class ${className} extends BasicsEntity{
+public class ${className} extends BasicsEntity {
 
 	<#list table.columns as column>
 	<#if (!ignore_columns?exists || ignore_columns?index_of(column.columnNameLower) = -1)>
