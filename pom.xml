@@ -68,11 +68,11 @@
 
 	<build>
 		<plugins>
-			<!--<plugin>-->
-				<!--<groupId>org.springframework.boot</groupId>-->
-				<!--<artifactId>spring-boot-maven-plugin</artifactId>-->
-			<!--</plugin>-->
 			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+<!--			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>2.6</version>
@@ -83,9 +83,9 @@
 							<classpathPrefix>lib/</classpathPrefix>
 							<mainClass>com.cy.GenApplication</mainClass>
 						</manifest>
-						<!--<manifestEntries>-->
-							<!--<Class-Path>.</Class-Path>-->
-						<!--</manifestEntries>-->
+						&lt;!&ndash;<manifestEntries>&ndash;&gt;
+							&lt;!&ndash;<Class-Path>.</Class-Path>&ndash;&gt;
+						&lt;!&ndash;</manifestEntries>&ndash;&gt;
 					</archive>
 				</configuration>
 			</plugin>
@@ -105,7 +105,7 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin>-->
 		</plugins>
 		<resources>
 			<resource>
