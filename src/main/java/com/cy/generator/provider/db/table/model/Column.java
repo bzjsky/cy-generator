@@ -446,6 +446,12 @@ public class Column implements java.io.Serializable,Cloneable{
 	public String getJqueryValidationString(){
 		return ColumnHelper.getJqueryValidationString(this);
 	}
+
+	public String getMaxLength(){
+		if(DatabaseDataTypesUtils.isString(this.getJavaType()) && this.getSize() > 0)
+			return String.valueOf(this.getSize()%2 == 0 ? this.getSize()/2 : this.getSize()/2-1);
+		return "";
+	}
 	
 	/**得到 rapid-validation的验证表达式: min-value-800  */
 	public String getNoRequiredValidateString() {
