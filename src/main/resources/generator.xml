@@ -1,105 +1,105 @@
-<?xml version="1.0" encoding="GBK"?>  
-<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">  
-<properties>  
-    <comment>  
-        ¥˙¬Î…˙≥…∆˜≈‰÷√Œƒº˛:   
-        1.ª·Œ™À˘”–µƒproperty…˙≥…property_dir Ù–‘,»Ápkg=com.company => pkg_dir=com/company  
-        2.ø…“‘“˝”√ª∑æ≥±‰¡ø: ${env.JAVA_HOME} or System.properties: ${user.home},property÷Æº‰“≤ø…“‘œ‡ª•“˝”√  
-    </comment>  
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment>
+        ‰ª£Á†ÅÁîüÊàêÂô®ÈÖçÁΩÆÊñá‰ª∂:
+        1.‰ºö‰∏∫ÊâÄÊúâÁöÑpropertyÁîüÊàêproperty_dirÂ±ûÊÄß,Â¶Çpkg=com.company => pkg_dir=com/company
+        2.ÂèØ‰ª•ÂºïÁî®ÁéØÂ¢ÉÂèòÈáè: ${env.JAVA_HOME} or System.properties: ${user.home},property‰πãÈó¥‰πüÂèØ‰ª•Áõ∏‰∫íÂºïÁî®
+    </comment>
 
-    <!-- ∞¸ -->
+    <!-- ÂåÖ -->
     <entry key="basepackage">com.cy</entry>
 
-    <!-- “µŒÒƒ£øÈ -->
+    <!-- ‰∏öÂä°Ê®°Âùó -->
     <entry key="namespace">member</entry>
 
-    <!--  «∑Ò∏≤∏« ‰≥ˆŒƒº˛,ƒ¨»œ÷µ «false -->
+    <!-- ÊòØÂê¶Ë¶ÜÁõñËæìÂá∫Êñá‰ª∂,ÈªòËÆ§ÂÄºÊòØfalse -->
     <entry key="gg_isOverride">true</entry>
 
-    <!-- ƒ£∞Êƒø¬º -->
-    <entry key="templateDir">E:\work\git\cy-generator\templates\template_3</entry>
+    <!-- Ê®°ÁâàÁõÆÂΩï -->
+    <entry key="templateDir">E:\work\git\cy-generator\templates\template_2</entry>
 
-    <!-- …˙≥…ƒø¬º -->
+    <!-- ÁîüÊàêÁõÆÂΩï -->
     <entry key="outRootDir">E:\work\git\cy-generator</entry>
 
-    <!-- –Ë“™“∆≥˝µƒ±Ì√˚«∞◊∫, π”√∂∫∫≈Ω¯––∑÷∏Ù∂‡∏ˆ«∞◊∫, æ¿˝÷µ: t_,v_ -->  
+    <!-- ÈúÄË¶ÅÁßªÈô§ÁöÑË°®ÂêçÂâçÁºÄ,‰ΩøÁî®ÈÄóÂè∑ËøõË°åÂàÜÈöîÂ§ö‰∏™ÂâçÁºÄ,Á§∫‰æãÂÄº: t_,v_ -->
     <entry key="tableRemovePrefixes">cy_</entry>
 
-    <!--  ˝æ›ø‚”√ªß√˚°¢√‹¬Î -->
+    <!-- Êï∞ÊçÆÂ∫ìÁî®Êà∑Âêç„ÄÅÂØÜÁ†Å -->
     <entry key="jdbc_username">root</entry>
     <entry key="jdbc_password">root</entry>
 
-          
-    <!-- oracle–Ë“™÷∏∂®jdbc.schema,∆‰À¸ ˝æ›ø‚∫ˆ¬‘¥ÀœÓ≈‰÷√ -->
+
+    <!-- oracleÈúÄË¶ÅÊåáÂÆöjdbc.schema,ÂÖ∂ÂÆÉÊï∞ÊçÆÂ∫ìÂøΩÁï•Ê≠§È°πÈÖçÁΩÆ -->
     <entry key="jdbc_schema"></entry>
     <entry key="jdbc_catalog"></entry>
 
-    <!--–Ë“™…˙≥…µƒ±Ì√˚(∂‡’≈±Ì÷–”¢Œƒ∂∫∫≈∏Ùø™)-->
-    <entry key="generator_tables">`merchant`,`merchant_account`</entry>
+    <!--ÈúÄË¶ÅÁîüÊàêÁöÑË°®Âêç(Â§öÂº†Ë°®‰∏≠Ëã±ÊñáÈÄóÂè∑ÈöîÂºÄ)-->
+    <entry key="generator_tables">`s_contract`</entry>
 
-    <!--∫ˆ¬‘¡–£®÷ª’Î∂‘…˙≥…javabeanº∞htmlŒƒº˛£¨  ”√ƒ£∞Ê∂˛£©-->
+    <!--ÂøΩÁï•ÂàóÔºàÂè™ÈíàÂØπÁîüÊàêjavabeanÂèähtmlÊñá‰ª∂ÔºåÈÄÇÁî®Ê®°Áâà‰∫åÔºâ-->
     <entry key="ignore_columns">id,createId,createName,createDate,modifyId,modifyName,modifyDate</entry>
 
-    <!--  ˝æ›ø‚¿‡–Õ”≥…‰  -->  
-    <entry key="java_typemapping.java.sql.Timestamp">java.util.Date</entry>  
-    <entry key="java_typemapping.java.sql.Date">java.util.Date</entry>  
-    <entry key="java_typemapping.java.sql.Time">java.util.Date</entry>    
-    <entry key="java_typemapping.java.lang.Byte">Integer</entry>  
-    <entry key="java_typemapping.java.lang.Short">Integer</entry>  
-    <entry key="java_typemapping.java.math.BigDecimal">Long</entry>
+    <!-- Êï∞ÊçÆÂ∫ìÁ±ªÂûãÊò†Â∞Ñ  -->
+    <entry key="java_typemapping.java.sql.Timestamp">java.util.Date</entry>
+    <entry key="java_typemapping.java.sql.Date">java.util.Date</entry>
+    <entry key="java_typemapping.java.sql.Time">java.util.Date</entry>
+    <entry key="java_typemapping.java.lang.Byte">Integer</entry>
+    <entry key="java_typemapping.java.lang.Short">Integer</entry>
+    <entry key="java_typemapping.java.math.BigDecimal">java.math.BigDecimal</entry>
 
     <!-- mysql -->
     <entry key="jdbc_url">jdbc:mysql://localhost:3306/cy?useUnicode=true&amp;characterEncoding=UTF-8</entry>
     <entry key="jdbc_driver">com.mysql.jdbc.Driver</entry>
 
-    <!-- H2 -->  
-    <!-- <entry key="jdbc.url">jdbc:h2:tcp://localhost/test</entry>  
-    <entry key="jdbc.driver">org.h2.Driver</entry>  
+    <!-- H2 -->
+    <!-- <entry key="jdbc.url">jdbc:h2:tcp://localhost/test</entry>
+    <entry key="jdbc.driver">org.h2.Driver</entry>
     -->
-  
-    <!-- Oracle  jdbc:oracle:oci:@tnsname_devdb  
-    <entry key="jdbc.url">jdbc:oracle:thin:@192.168.0.177:1521:[sid]</entry>  
-    <entry key="jdbc.driver">oracle.jdbc.driver.OracleDriver</entry>  
-    -->  
-      
-    <!-- SQLServer2000   
-    <entry key="jdbc.url">jdbc:microsoft:sqlserver://localhost:1433;DatabaseName=[database]</entry>  
-    <entry key="jdbc.driver">com.microsoft.jdbc.sqlserver.SQLServerDriver</entry>  
-    -->  
-      
-    <!-- SQLServer2005   
-    <entry key="jdbc.url">jdbc:sqlserver://192.168.0.98:1433;DatabaseName=[database]</entry>  
-    <entry key="jdbc.driver">com.microsoft.sqlserver.jdbc.SQLServerDriver</entry>  
-    -->  
-  
-    <!-- JTDs for SQLServer   
-    <entry key="jdbc.url">jdbc:jtds:sqlserver://192.168.0.102:1433/[database];tds=8.0;lastupdatecount=true</entry>  
-    <entry key="jdbc.driver">net.sourceforge.jtds.jdbc.Driver</entry>  
-    -->  
-  
-    <!-- PostgreSql  
-   <entry key="jdbc.url">jdbc:postgresql://localhost/[database]</entry>  
-   <entry key="jdbc.driver">org.postgresql.Driver</entry>  
-    -->  
-      
-    <!-- Sybase  
-   <entry key="jdbc.url">jdbc:sybase:Tds:localhost:5007/[database]</entry>  
-   <entry key="jdbc.driver">com.sybase.jdbc.SybDriver</entry>  
-    -->  
-      
-    <!-- DB2   
-    <entry key="jdbc.url">jdbc:db2://localhost:5000/[database]</entry>  
-    <entry key="jdbc.driver">com.ibm.db2.jdbc.app.DB2Driver</entry>  
-    -->  
-      
-    <!-- HsqlDB   
-    <entry key="jdbc.url">jdbc:hsqldb:mem:generatorDB</entry>  
-    <entry key="jdbc.driver">org.hsqldb.jdbcDriver</entry>  
-    -->  
-      
-    <!-- Derby   
-    <entry key="jdbc.url">jdbc:derby://localhost/databaseName</entry>  
-    <entry key="jdbc.driver">org.apache.derby.jdbc.ClientDriver</entry>   
-    -->  
-  
-</properties>  
+
+    <!-- Oracle  jdbc:oracle:oci:@tnsname_devdb
+    <entry key="jdbc.url">jdbc:oracle:thin:@192.168.0.177:1521:[sid]</entry>
+    <entry key="jdbc.driver">oracle.jdbc.driver.OracleDriver</entry>
+    -->
+
+    <!-- SQLServer2000
+    <entry key="jdbc.url">jdbc:microsoft:sqlserver://localhost:1433;DatabaseName=[database]</entry>
+    <entry key="jdbc.driver">com.microsoft.jdbc.sqlserver.SQLServerDriver</entry>
+    -->
+
+    <!-- SQLServer2005
+    <entry key="jdbc.url">jdbc:sqlserver://192.168.0.98:1433;DatabaseName=[database]</entry>
+    <entry key="jdbc.driver">com.microsoft.sqlserver.jdbc.SQLServerDriver</entry>
+    -->
+
+    <!-- JTDs for SQLServer
+    <entry key="jdbc.url">jdbc:jtds:sqlserver://192.168.0.102:1433/[database];tds=8.0;lastupdatecount=true</entry>
+    <entry key="jdbc.driver">net.sourceforge.jtds.jdbc.Driver</entry>
+    -->
+
+    <!-- PostgreSql
+   <entry key="jdbc.url">jdbc:postgresql://localhost/[database]</entry>
+   <entry key="jdbc.driver">org.postgresql.Driver</entry>
+    -->
+
+    <!-- Sybase
+   <entry key="jdbc.url">jdbc:sybase:Tds:localhost:5007/[database]</entry>
+   <entry key="jdbc.driver">com.sybase.jdbc.SybDriver</entry>
+    -->
+
+    <!-- DB2
+    <entry key="jdbc.url">jdbc:db2://localhost:5000/[database]</entry>
+    <entry key="jdbc.driver">com.ibm.db2.jdbc.app.DB2Driver</entry>
+    -->
+
+    <!-- HsqlDB
+    <entry key="jdbc.url">jdbc:hsqldb:mem:generatorDB</entry>
+    <entry key="jdbc.driver">org.hsqldb.jdbcDriver</entry>
+    -->
+
+    <!-- Derby
+    <entry key="jdbc.url">jdbc:derby://localhost/databaseName</entry>
+    <entry key="jdbc.driver">org.apache.derby.jdbc.ClientDriver</entry>
+    -->
+
+</properties>
