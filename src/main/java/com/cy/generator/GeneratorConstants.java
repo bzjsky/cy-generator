@@ -42,7 +42,7 @@ public enum GeneratorConstants {
             "SqlFactory在解析sql时,需要忽略的SQLException的错误码列表,使用逗号分隔多个error codes"),
 
     IGNORE_COLUMNS("ignore_columns", "", "忽略列"),
-    GENERATOR_TABLES("generator_tables", "", "忽略列");
+    GENERATOR_TABLES("generator_tables", "", "表名");
     public final String code;
     public final String defaultValue;
     public final String desc;

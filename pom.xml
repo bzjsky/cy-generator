@@ -106,6 +106,40 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- ProGuard混淆插件-->
+			<plugin>
+				<groupId>com.github.wvengen</groupId>
+				<artifactId>proguard-maven-plugin</artifactId>
+				<version>2.0.14</version>
+				<executions>
+					<execution>
+						<!--混淆执行的阶段，此处为编译后。可选参数：compile、prepare-package、package-->
+						<phase>process-classes</phase>
+						<goals>
+							<goal>proguard</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<!--混淆后是否打包，默认为true,这里为false-->
+					<attach>false</attach>
+					<obfuscate>true</obfuscate>
+					<!--混淆机制配置文件-->
+					<proguardInclude>${basedir}/proguard.cfg</proguardInclude>
+					<!--仅在attach为true时生效，类似一个后缀，有命名空间的作用-->
+					<!--attachArtifactClassifier>proguard</attachArtifactClassifier-->
+					<!--proguard所依赖的lib-->
+					<libs>
+						<lib>${java.home}/lib/rt.jar</lib>
+					</libs>
+					<!--所混淆文件路径-->
+					<outputDirectory>${project.build.directory}</outputDirectory>
+					<!--所混淆的文件，以混淆文件路径outputDirectory-->
+					<injar>classes</injar>
+					<!--混淆后的输出目录，默认父路径为${project.build.finalName}/WEB-INF/-->
+					<outjar>classes</outjar>
+				</configuration>
+			</plugin>
 		</plugins>
 		<resources>
 			<resource>

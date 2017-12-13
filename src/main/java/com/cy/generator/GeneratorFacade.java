@@ -6,6 +6,7 @@ import com.cy.generator.provider.db.table.TableFactory;
 import com.cy.generator.provider.db.table.model.Table;
 import com.cy.generator.provider.java.model.JavaClass;
 import com.cy.generator.util.*;
+import org.apache.commons.lang.StringUtils;
 
 import java.io.*;
 import java.util.*;
@@ -21,9 +22,11 @@ import static com.cy.generator.GeneratorConstants.GENERATOR_TOOLS_CLASS;
 public class GeneratorFacade {
     private com.cy.generator.Generator generator = new com.cy.generator.Generator();
 
+    private static final String OUTROOT_PATH =  "outRoot";
+
     public GeneratorFacade() {
         if (StringHelper.isNotBlank(GeneratorProperties.getProperty("outRootDir"))) {
-            generator.setOutRootDir(GeneratorProperties.getProperty("outRootDir"));
+            generator.setOutRootDir(GeneratorProperties.getProperty("outRootDir")+ File.separator + OUTROOT_PATH);
         }
         if (StringHelper.isNotBlank(GeneratorProperties.getProperty("templateDir"))) {
             generator.setTemplateDir(GeneratorProperties.getProperty("templateDir"));
@@ -110,8 +113,11 @@ public class GeneratorFacade {
      */
     public void generateByTable(String... tableNames) throws Exception {
         for (String tableName : tableNames) {
-            new ProcessUtils().processByTable(tableName, false);
+            if(StringUtils.isNotEmpty(tableName))
+                new ProcessUtils().processByTable(tableName, false);
         }
+        GLogger.println("generator finish by https://gitee.com/bzj/cy-generator");
+        GLogger.println("generator catalog: "+ generator.getOutRootDir());
     }
 
     /**

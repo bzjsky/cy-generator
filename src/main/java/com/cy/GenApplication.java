@@ -15,9 +15,6 @@ import java.io.File;
  */
 public class GenApplication {
 
-    private static final String TEMPLATE_PATH =  "templates";
-    private static final String OUTROOT_PATH =  "outRoot";
-
 /*    public enum TemplateEnum{
         *//** 模版一 *//*
         TEMPLATE_1("template_1"),
@@ -35,17 +32,12 @@ public class GenApplication {
 
     public static void main(String[] args) throws Exception {
 
-        GLogger.println("generator by https://gitee.com/bzj/cy-generator");
         GeneratorFacade g = new GeneratorFacade();
         g.getGenerator().addTemplateRootDir(g.getGenerator().getTemplateDir());
-        g.getGenerator().setOutRootDir(g.getGenerator().getOutRootDir() + File.separator + OUTROOT_PATH);
+        g.getGenerator().setOutRootDir(g.getGenerator().getOutRootDir() + File.separator);
 
         // 通过数据库表生成文件
-        String generatorTables = GeneratorProperties.getProperty(GeneratorConstants.GENERATOR_TABLES);
-        if(StringUtils.isNotEmpty(generatorTables)){
-            g.generateByTable(generatorTables.split(","));
-        }
-
+        g.generateByTable(GeneratorProperties.getProperty(GeneratorConstants.GENERATOR_TABLES).split(","));
 
         // 删除生成器的输出目录//
         // g.deleteOutRootDir();
