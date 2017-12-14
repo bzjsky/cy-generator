@@ -112,12 +112,16 @@ public class GeneratorFacade {
      * @throws Exception
      */
     public void generateByTable(String... tableNames) throws Exception {
+        List<String> tables = new ArrayList<>();
         for (String tableName : tableNames) {
-            if(StringUtils.isNotEmpty(tableName))
+            if(StringUtils.isNotEmpty(tableName)) {
                 new ProcessUtils().processByTable(tableName, false);
+                tables.add(tableName);
+            }
         }
-        GLogger.println("generator finish by https://gitee.com/bzj/cy-generator");
+        GLogger.println("generator completed by https://gitee.com/bzj/cy-generator");
         GLogger.println("generator catalog: "+ generator.getOutRootDir());
+        GLogger.println("generator completed tables: " + StringUtils.join(tables.toArray(), ","));
     }
 
     /**

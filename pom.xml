@@ -106,40 +106,121 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- ProGuard混淆插件-->
-			<plugin>
-				<groupId>com.github.wvengen</groupId>
-				<artifactId>proguard-maven-plugin</artifactId>
-				<version>2.0.14</version>
+			<!-- ProGuard混淆插件 -->
+			<plugin><!--将所有的依赖达到一个jar包里-->
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<!--这里要替换成jar包main方法所在类-->
+							<mainClass>com.sq.platform.datacube.core.impl.DataCube</mainClass>
+						</manifest>
+					</archive>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
 				<executions>
 					<execution>
-						<!--混淆执行的阶段，此处为编译后。可选参数：compile、prepare-package、package-->
-						<phase>process-classes</phase>
+						<id>make-assembly</id> <!-- this is used for inheritance merges -->
+						<phase>package</phase> <!-- 指定在打包节点执行jar包合并操作 -->
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!--用混淆插件混淆代码-->
+<!--			<plugin>
+				<groupId>com.github.wvengen</groupId>
+				<artifactId>proguard-maven-plugin</artifactId>
+				<version>2.0.11</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
 						<goals>
 							<goal>proguard</goal>
 						</goals>
 					</execution>
 				</executions>
 				<configuration>
-					<!--混淆后是否打包，默认为true,这里为false-->
-					<attach>false</attach>
+					<attach>true</attach>
+					<attachArtifactClassifier>pg</attachArtifactClassifier>
+					&lt;!&ndash; attach 的作用是在 install 与 deploy 时将生成的 pg 文件也安装与部署 &ndash;&gt;
+					<options> &lt;!&ndash; 详细配置方式参考 ProGuard 官方文档 &ndash;&gt;
+						<option>-ignorewarnings</option> &lt;!&ndash;忽略所有告警&ndash;&gt;
+						<option>-dontshrink</option>   &lt;!&ndash;不做 shrink &ndash;&gt;
+						<option>-dontoptimize</option> &lt;!&ndash;不做 optimize &ndash;&gt;
+						<option>-dontskipnonpubliclibraryclasses </option>
+						<option>-dontskipnonpubliclibraryclassmembers </option>
+						<option>-dontnote </option>
+
+						<option>-keepattributes Signature</option>
+
+						&lt;!&ndash;保持源码名与行号（异常时有明确的栈信息），注解（默认会过滤掉所有注解，会影响框架的注解）&ndash;&gt;
+						<option>-keepattributes Exceptions,InnerClasses,*Annotation*,Signature,LineNumberTable</option>
+
+
+						&lt;!&ndash; 保持bean类名与属性名不变不变 &ndash;&gt;
+						<option>-keep class com.sq.platform.datacube.model.**</option>
+						<option>-keepclassmembers class com.sq.platform.datacube.model.** { *;}</option>
+						&lt;!&ndash; 保持对外的接口性质类对外的类名与方法名不变 &ndash;&gt;
+						<option>-keep class com.sq.platform.datacube.core.**</option>
+						<option>-keepclassmembers class com.sq.platform.datacube.core.** { *;}</option>
+
+						<option>-keep class com.sq.platform.datacube.exception.**</option>
+						<option>-keepclassmembers class com.sq.platform.datacube.exception.** { *;}</option>
+
+						&lt;!&ndash;以下配置第三方包不参与混淆&ndash;&gt;
+						<option>-keepclassmembers class com.hopechart.dcroute.** { *;}</option>
+						<option>-dontwarn com.hopechart.dcroute.**</option>
+						<option>-keep class com.hopechart.dcroute.** {*;}</option>
+
+						<option>-keepclassmembers class com.hopechart.cloud.** { *;}</option>
+						<option>-dontwarn com.hopechart.cloud.**</option>
+						<option>-keep class com.hopechart.cloud.** {*;}</option>
+
+						<option>-keepclassmembers class com.hopechart.jcc.** { *;}</option>
+						<option>-dontwarn com.hopechart.jcc.**</option>
+						<option>-keep class com.hopechart.jcc.** {*;}</option>
+
+						<option>-keepclassmembers class oracle.** { *;}</option>
+						<option>-dontwarn oracle.**</option>
+						<option>-keep class oracle.**</option>
+
+						<option>-keepclassmembers class org.aopalliance.** { *;}</option>
+						<option>-dontwarn org.aopalliance.**</option>
+						<option>-keep class org.aopalliance.**</option>
+
+						<option>-keepclassmembers class org.apache.commons.** { *;}</option>
+						<option>-dontwarn org.apache.commons.**</option>
+						<option>-keep class org.apache.commons.**</option>
+
+						<option>-keepclassmembers class org.apache.log4j.** { *;}</option>
+						<option>-dontwarn org.apache.log4j.**</option>
+						<option>-keep class org.apache.log4j.**</option>
+
+						<option>-keepclassmembers  class org.slf4j.** { *;}</option>
+						<option>-dontwarn  org.slf4j.**</option>
+						<option>-keep class org.slf4j.**</option>
+
+						<option>-keepclassmembers class org.springframework.** { *;}</option>
+						<option>-dontwarn  org.springframework.**</option>
+						<option>-keep class org.springframework.**</option>
+
+					</options>
+					&lt;!&ndash;指定混淆的jar包，我这里是将上一步输出的jar包进行混淆&ndash;&gt;
+					<injar>datacube-1.0-SNAPSHOT-jar-with-dependencies.jar</injar>
+					&lt;!&ndash;指定输出的jar包名&ndash;&gt;
+					<outjar>${project.build.finalName}-pg</outjar>
 					<obfuscate>true</obfuscate>
-					<!--混淆机制配置文件-->
-					<proguardInclude>${basedir}/proguard.cfg</proguardInclude>
-					<!--仅在attach为true时生效，类似一个后缀，有命名空间的作用-->
-					<!--attachArtifactClassifier>proguard</attachArtifactClassifier-->
-					<!--proguard所依赖的lib-->
+					&lt;!&ndash; 添加依赖，必须添加，不然会报一些莫名错误&ndash;&gt;
 					<libs>
 						<lib>${java.home}/lib/rt.jar</lib>
+						<lib>${java.home}/lib/jce.jar</lib>
 					</libs>
-					<!--所混淆文件路径-->
-					<outputDirectory>${project.build.directory}</outputDirectory>
-					<!--所混淆的文件，以混淆文件路径outputDirectory-->
-					<injar>classes</injar>
-					<!--混淆后的输出目录，默认父路径为${project.build.finalName}/WEB-INF/-->
-					<outjar>classes</outjar>
 				</configuration>
-			</plugin>
+			</plugin>-->
 		</plugins>
 		<resources>
 			<resource>
