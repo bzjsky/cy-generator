@@ -381,10 +381,22 @@ public class Table implements java.io.Serializable,Cloneable {
 			if(item.getSqlName().equals("orders")) {
 				defaultOrder.setLength(0);
 				defaultOrder.append("ORDER BY orders");
-			}else if(defaultOrder.length() == 0 && item.getSqlName().equals("modify_date")) {
-				defaultOrder.append("ORDER BY modify_date DESC");
 			}
 		});
+		if(defaultOrder.length() == 0){
+			columns.forEach(item -> {
+				if(item.getSqlName().equals("modify_date")) {
+					defaultOrder.append("ORDER BY modify_date DESC");
+				}
+			});
+		}
+		if(defaultOrder.length() == 0){
+			columns.forEach(item -> {
+				if(item.getSqlName().equals("create_date")) {
+					defaultOrder.append("ORDER BY create_date DESC");
+				}
+			});
+		}
 		return defaultOrder.toString();
 	}
 }
