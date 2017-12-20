@@ -2,7 +2,7 @@ package com.cy.sdk.service.impl;
 
 import com.cy.sdk.mapper.BasicsMapper;
 import com.cy.sdk.service.BasicsService;
-import com.github.pagehelper.PageHelper;
+import com.cy.sdk.util.CyPageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -73,9 +73,7 @@ public abstract class BasicsServiceImpl<T, ID extends Serializable> implements B
 
     @Override
     public PageInfo<T> queryListPage(Integer pageNum, Integer pageSize, T t) {
-        if(pageNum == null) pageNum = 1;
-        if(pageSize == null) pageSize = 10;
-        return new PageInfo<>(PageHelper.startPage(pageNum, pageSize).doSelectPage(() -> basicsMapper.queryList(t)));
+        return new PageInfo<>(CyPageHelper.startPage(pageNum, pageSize).doSelectPage(() -> basicsMapper.queryList(t)));
     }
 
     @Override
