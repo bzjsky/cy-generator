@@ -26,14 +26,14 @@
 	<insert id="insert" useGeneratedKeys="true" keyProperty="${table.pkColumn.columnNameFirstLower}" parameterType="${basepackage}.biz.${namespace}.entity.${className}">
 		INSERT INTO ${table.sqlName}
 		<trim prefix="(" suffix=")" suffixOverrides="," >
-		<#list table.notPkColumns as column>
+		<#list table.columns as column>
 			<if test="${column.columnNameFirstLower} != null" >
 				${column.sqlName},
 			</if>
 		</#list>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides="," >
-		<#list table.notPkColumns as column>
+		<#list table.columns as column>
 			<if test="${column.columnNameFirstLower} != null" >
 				<@mapperEl column.columnNameFirstLower/>,
 			</if>
