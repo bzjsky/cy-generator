@@ -6,10 +6,10 @@
     :close-on-click-modal="false"
     :visible.sync="visible">
     <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="80px">
-      <#list table.notPkColumns as column>
-          <el-form-item label="${column.remarks}" prop="${column.columnNameLower}">
-              <el-input v-model="dataForm.${column.columnNameLower}" placeholder="${column.remarks}"></el-input>
-          </el-form-item>
+      <#list table.optionsColumns as column>
+      <el-form-item label="${column.remarks}" prop="${column.columnNameLower}">
+          <el-input v-model${column.number?string(".number","")}="dataForm.${column.columnNameLower}" placeholder="${column.remarks}"></el-input>
+      </el-form-item>
       </#list>
     </el-form>
     <span slot="footer" class="dialog-footer">
@@ -21,33 +21,33 @@
 
 <script>
   import * as ${className} from '@/api/modules/${namespace}/${classNameLower}'
-  import { isEmail, isMobile } from '@/utils/validate'
   export default {
     data () {
       return {
         visible: false,
-        roleList: [],
         dataForm: {
         },
         dataRule: {
+        <#list table.optionsColumns as column>
+          ${column.columnNameLower}: ${column.elementUIDataRule}<#if column_has_next>,</#if>
+        </#list>
         }
       }
     },
     methods: {
       init (id) {
-
-          this.dataForm.id = id || 0
-          this.visible = true
-          this.$nextTick(() => {
-              this.$refs['dataForm'].resetFields()
-              if (this.dataForm.id) {
-                ${className}.info(this.dataForm.id).then(({data}) => {
-                  if (data && data.code === 0) {
-                      this.dataForm = data.obj;
-                  }
-                })
+        this.dataForm.id = id || 0
+        this.visible = true
+        this.$nextTick(() => {
+          this.$refs['dataForm'].resetFields()
+          if (this.dataForm.id) {
+            ${className}.info(this.dataForm.id).then(({data}) => {
+              if (data && data.code === 0) {
+                this.dataForm = data.obj
               }
-          })
+            })
+          }
+        })
       },
       // 表单提交
       dataFormSubmit () {

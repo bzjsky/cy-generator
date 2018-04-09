@@ -447,6 +447,15 @@ public class Column implements java.io.Serializable,Cloneable{
 		return ColumnHelper.getJqueryValidationString(this);
 	}
 
+	public String getElementUIDataRule(){
+		return ColumnHelper.getElementUIDataRule(this);
+	}
+
+	public Boolean getNumber(){
+		return DatabaseDataTypesUtils.isFloatNumber(getJavaType())||
+		DatabaseDataTypesUtils.isIntegerNumber(getJavaType());
+	}
+
 	public String getMaxLength(){
 		if(DatabaseDataTypesUtils.isString(this.getJavaType()) && this.getSize() > 0)
 			return String.valueOf(this.getSize()%2 == 0 ? this.getSize()/2 : this.getSize()/2-1);

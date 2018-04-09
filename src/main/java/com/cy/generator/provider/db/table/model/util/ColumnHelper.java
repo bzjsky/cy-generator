@@ -1,7 +1,6 @@
 package com.cy.generator.provider.db.table.model.util;
 
 import com.cy.generator.provider.db.table.model.Column;
-import com.cy.generator.util.StringHelper;
 import com.cy.generator.util.typemapping.DatabaseDataTypesUtils;
 import org.apache.commons.lang.StringUtils;
 
@@ -94,11 +93,74 @@ public class ColumnHelper {
 			if(c.getJavaType().toLowerCase().indexOf("short") >= 0) {
 				result.add("max:"+Short.MAX_VALUE);
 			}else if(c.getJavaType().toLowerCase().indexOf("integer") >= 0) {
-				result.add("max:"+Short.MAX_VALUE);
+				result.add("max:"+Integer.MAX_VALUE);
 			}else if(c.getJavaType().toLowerCase().indexOf("byte") >= 0) {
-				result.add("max:"+Short.MAX_VALUE);
+				result.add("max:"+Byte.MAX_VALUE);
 			}
 		}
 		return StringUtils.join(result, ",");
 	}
+
+	public static String getElementUIDataRule(Column c) {
+//		List<Map> result = new ArrayList<>();
+		List<String> result = new ArrayList<>();
+		if(!c.isNullable()){
+//			Map map = new HashMap();
+//			map.put("required", true);
+//			map.put("message", "不能为空");
+//			map.put("trigger", "blur");
+//			result.add(map);
+			result.add("{required: true, message: '不能为空', trigger: 'change'}");
+		}
+
+		if(c.getSqlName().indexOf("mail") >= 0) {
+//			Map map = new HashMap();
+//			map.put("type", "email");
+//			map.put("message", "请输入正确的邮箱地址");
+//			map.put("trigger", "blur");
+//			result.add(map);
+			result.add("{type: 'email', message: '请输入正确的邮箱地址', trigger: 'change'}");
+		}
+		if(DatabaseDataTypesUtils.isFloatNumber(c.getJavaType())) {
+//			Map map = new HashMap();
+//			map.put("type", "number");
+//			map.put("message", "必须为数字值");
+//			map.put("trigger", "blur");
+//			result.add(map);
+			result.add("{type: 'number', message: '必须为数字值', trigger: 'change'}");
+		}
+		if(DatabaseDataTypesUtils.isString(c.getJavaType()) && c.getSize() > 0){
+//			Map map = new HashMap();
+			int max = c.getSize()%2 == 0 ? c.getSize()/2 : c.getSize()/2-1;
+//			map.put("max", max);
+//			map.put("message", "不能超过"+max+"个字符");
+//			map.put("trigger", "blur");
+//			result.add(map);
+			result.add("{max: " + max + ", message: '不能超过" + max + "个字符', trigger: 'change'}");
+		}else if(DatabaseDataTypesUtils.isIntegerNumber(c.getJavaType())) {
+//			Map map = new HashMap();
+//			int max = c.getSize()%2 == 0 ? c.getSize()/2 : c.getSize()/2-1;
+//			map.put("type", "number");
+//			map.put("message", "必须为数字值");
+//			map.put("trigger", "blur");
+			String str = "{";
+
+//
+			if(c.getJavaType().toLowerCase().indexOf("short") >= 0) {
+//				map.put("max", Short.MAX_VALUE);
+				str += "max: " + Short.MAX_VALUE + ", ";
+			}else if(c.getJavaType().toLowerCase().indexOf("integer") >= 0) {
+//				map.put("max", Integer.MAX_VALUE);
+				str += "max: " + Integer.MAX_VALUE + ", ";
+			}else if(c.getJavaType().toLowerCase().indexOf("byte") >= 0) {
+//				map.put("max", Byte.MAX_VALUE);
+				str += "max: " + Byte.MAX_VALUE + ", ";
+			}
+//			result.add(map);
+			result.add(str + "type: 'number', message: '必须为数字值', trigger: 'change'}");
+		}
+//		return JSON.toJSONString(result, SerializerFeature.UseSingleQuotes);
+		return "["+StringUtils.join(result, ", ")+"]";
+	}
+
 }

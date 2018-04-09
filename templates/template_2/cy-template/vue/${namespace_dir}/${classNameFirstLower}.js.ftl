@@ -17,7 +17,7 @@ export function list (params) {
 // 获取${table.remarks}信息
 export function info (id) {
   return request({
-    url: requestUrl('/${classNameLower}/getById' + (isInteger(id) ? "?id=" + id : '')),
+    url: requestUrl('/${classNameLower}/getById' + (isInteger(id) ? '?id=' + id : '')),
     method: 'get',
     params: requestParam({}, 'get')
   })
@@ -35,7 +35,7 @@ export function add (params) {
 // 修改${table.remarks}
 export function update (params) {
   return request({
-    url: requestUrl('${classNameLower}/modify'),
+    url: requestUrl('/${classNameLower}/modify'),
     method: 'post',
     data: requestParam(params)
   })

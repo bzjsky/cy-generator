@@ -4,7 +4,7 @@
   <div class="mod-user">
     <el-form :inline="true" :model="dataForm" @keyup.enter.native="getDataList()">
       <el-form-item>
-        <el-input v-model="dataForm.userName" placeholder="用户名" clearable></el-input>
+        <el-input v-model="dataForm.keyword" placeholder="关键字" clearable></el-input>
       </el-form-item>
       <el-form-item>
         <el-button @click="getDataList()">查询</el-button>
@@ -25,12 +25,12 @@
         width="50">
       </el-table-column>
       <#list table.notPkColumns as column>
-            <el-table-column
-                    prop="${column.columnNameLower}"
-                    header-align="center"
-                    align="center"
-                    label="${column.remarks}">
-            </el-table-column>
+      <el-table-column
+        prop="${column.columnNameLower}"
+        header-align="center"
+        align="center"
+        label="${column.remarks}">
+      </el-table-column>
       </#list>
       <el-table-column
         fixed="right"
@@ -40,7 +40,7 @@
         label="操作">
         <template slot-scope="scope">
           <el-button v-if="isAuth('${classNameLower}:modify')" type="text" size="small" @click="addOrUpdateHandle(scope.row.id)">修改</el-button>
-          <el-button v-if="isAuth('${classNameLower}:delete')" type="text" size="small" @click="deleteHandle(scope.row.id)">删除</el-button>
+          <el-button v-if="isAuth('${classNameLower}:remove')" type="text" size="small" @click="deleteHandle(scope.row.id)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -59,20 +59,21 @@
 </template>
 
 <script>
+  import merge from 'lodash/merge'
   import * as ${className} from '@/api/modules/${namespace}/${classNameLower}'
   import AddOrUpdate from './${classNameLower}Edit'
   export default {
     data () {
       return {
         dataForm: {
-          userName: ''
+          keyword: ''
         },
         page: {
-            pageNum: 1,
-            pageSize: 10,
-            total: 0,
-            list: []
-        }
+          pageNum: 1,
+          pageSize: 10,
+          total: 0,
+          list: []
+        },
         dataListLoading: false,
         dataListSelections: [],
         addOrUpdateVisible: false
@@ -89,16 +90,15 @@
       getDataList () {
         this.dataListLoading = true
         var params = {
-          page: this.pageIndex,
-          limit: this.pageSize,
-          username: this.dataForm.userName
+          pageNum: this.page.pageNum,
+          pageSize: this.page.pageSize
         }
-        ${className}.list(params).then(({data}) => {
+        ${className}.list(merge(this.dataForm, params)).then(({data}) => {
           if (data && data.code === 0) {
-              this.page = data.obj
+            this.page = data.obj
           } else {
-              this.page.list = []
-              this.page.total = 0
+            this.page.list = []
+            this.page.total = 0
           }
           this.dataListLoading = false
         })
@@ -130,12 +130,12 @@
         var ids = id ? [id] : this.dataListSelections.map(item => {
           return item.id
         })
-        this.$confirm('确定进行'+ (id ? '删除' : '批量删除') +'操作?', '提示', {
+        this.$confirm('确定进行' + (id ? '删除' : '批量删除') + '操作?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-        ${className}.del(ids).then(({data}) => {
+          ${className}.del(ids).then(({data}) => {
             if (data && data.code === 0) {
               this.$message({
                 message: '操作成功',

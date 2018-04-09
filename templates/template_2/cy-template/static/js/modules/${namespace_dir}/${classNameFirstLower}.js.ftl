@@ -39,7 +39,7 @@ $(function () {
     });
 	jQuery.validator.addClassRules({
 		<#list table.optionsColumns as column>
-        validate_${column.columnNameLower}: {
+        validate_${column.columnNameFirstLower}: {
 			${column.jqueryValidationString}
 		}<#if column_has_next>,</#if>
 		</#list>
