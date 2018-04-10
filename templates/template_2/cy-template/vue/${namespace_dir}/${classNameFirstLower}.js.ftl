@@ -6,7 +6,7 @@ import requestParam from '@/api/requestParam'
 import isInteger from 'lodash/isInteger'
 
 // 获取${table.remarks}列表
-export function list (params) {
+export function listPage (params) {
   return request({
     url: requestUrl('/${classNameLower}/queryListPage'),
     method: 'get',

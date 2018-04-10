@@ -93,7 +93,7 @@
           pageNum: this.page.pageNum,
           pageSize: this.page.pageSize
         }
-        ${className}.list(merge(this.dataForm, params)).then(({data}) => {
+        ${className}.listPage(merge(this.dataForm, params)).then(({data}) => {
           if (data && data.code === 0) {
             this.page = data.obj
           } else {
