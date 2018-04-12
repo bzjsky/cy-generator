@@ -8,7 +8,7 @@
     <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="80px">
       <#list table.optionsColumns as column>
       <el-form-item label="${column.remarks}" prop="${column.columnNameLower}">
-          <el-input v-model${column.number?string(".number","")}="dataForm.${column.columnNameLower}" placeholder="${column.remarks}"></el-input>
+        <el-input v-model${column.number?string(".number","")}="dataForm.${column.columnNameLower}" placeholder="${column.remarks}"></el-input>
       </el-form-item>
       </#list>
     </el-form>
