@@ -106,12 +106,12 @@
       // 每页数
       sizeChangeHandle (val) {
         this.page.pageSize = val
-        this.page.pageIndex = 1
+        this.page.pageNum = 1
         this.getDataList()
       },
       // 当前页
       currentChangeHandle (val) {
-        this.page.pageIndex = val
+        this.page.pageNum = val
         this.getDataList()
       },
       // 多选
