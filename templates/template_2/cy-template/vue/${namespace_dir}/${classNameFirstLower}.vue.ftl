@@ -59,19 +59,16 @@
 </template>
 
 <script>
-  import merge from 'lodash/merge'
   import * as ${className} from '@/api/modules/${namespace}/${classNameLower}'
   import AddOrUpdate from './${classNameLower}Edit'
   export default {
     data () {
       return {
         dataForm: {
-          keyword: ''
+          pageNum: 1,
+          pageSize: 10
         },
         page: {
-          pageNum: 1,
-          pageSize: 10,
-          total: 0,
           list: []
         },
         dataListLoading: false,
@@ -93,7 +90,7 @@
           pageNum: this.page.pageNum,
           pageSize: this.page.pageSize
         }
-        ${className}.listPage(merge(this.dataForm, params)).then(({data}) => {
+        ${className}.listPage(this.dataForm).then(({data}) => {
           if (data && data.code === 0) {
             this.page = data.obj
           } else {
@@ -105,13 +102,13 @@
       },
       // 每页数
       sizeChangeHandle (val) {
-        this.page.pageSize = val
-        this.page.pageNum = 1
+        this.pageNum.pageSize = val
+        this.pageNum.pageNum = 1
         this.getDataList()
       },
       // 当前页
       currentChangeHandle (val) {
-        this.page.pageNum = val
+        this.pageNum.pageNum = val
         this.getDataList()
       },
       // 多选
